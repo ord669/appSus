@@ -1,4 +1,4 @@
-tr {
+.mail-list tr {
     line-height: 1rem;
     border-radius: 25px;
     text-align: left;
@@ -6,11 +6,11 @@ tr {
     position: relative;
     padding-left: 0.4rem;
 }
-tr:hover {
+.mail-list  tr:hover {
     box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
-td {
+.mail-list td {
     height: 1rem;
     line-height: 1rem;
     padding: 0.4rem;

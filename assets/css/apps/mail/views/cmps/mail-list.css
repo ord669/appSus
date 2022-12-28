@@ -1,4 +1,4 @@
-table {
+.mail-list table {
   height: 100%;
   border-radius: 25px;
   background-color: var(--secondery-bg-color);
