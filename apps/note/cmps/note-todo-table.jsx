@@ -1,8 +1,6 @@
 const { useState, useEffect, Fragment } = React
 
 export function DataTableRow({ todo, onRemoveTodo }) {
-    console.log('todo11:', todo)
-
     return <Fragment>
         <tr>
             <td>{todo.txt}</td>

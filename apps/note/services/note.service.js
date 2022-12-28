@@ -16,6 +16,8 @@ export const noteService = {
 // }
 
 
+
+
 function getNotes() {
     console.log('hi:')
     return [

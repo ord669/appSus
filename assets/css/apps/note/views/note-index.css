@@ -1,0 +1,24 @@
+.note-index {
+    height: 100vh;
+    background: var(--secondery-bg-color);
+    display: grid;
+    grid-template-columns: 0.5fr 5fr;
+    grid-template-rows: 0.2fr 5fr;
+    grid-template-areas:
+        "header header header header"
+        "sidebar main main main"
+
+}
+
+
+.note-filter {
+    grid-area: header;
+}
+
+.main-note-layout {
+    grid-area: main;
+}
+
+.note-side-bart {
+    grid-area: sidebar;
+}
