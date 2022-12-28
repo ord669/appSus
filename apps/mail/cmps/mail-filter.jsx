@@ -7,6 +7,7 @@ import { mailService } from "../services/mail.service.js"
 export function MailFilter({onSetFilter}) {
   
   const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
+  // const [isReadFilter,setIsReadFilter] = useState(false)
 
   useEffect(()=>{
     onSetFilter(filterByToEdit)
@@ -16,6 +17,7 @@ export function MailFilter({onSetFilter}) {
   function handleChange({ target }) {
     let { value, name: field, type } = target
     value = (type === 'number') ? +value : value
+    
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
 }
 
@@ -27,6 +29,12 @@ export function MailFilter({onSetFilter}) {
       onChange={handleChange}
       // ref={elInputRef}
     />
+    {/* <input type="checkbox"
+      name="isRead"
+      placeholder="Search mail"
+      onChange={handleChange}
+      // ref={elInputRef}
+    /> */}
     
   </section>
 
