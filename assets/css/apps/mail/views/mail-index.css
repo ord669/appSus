@@ -1,6 +1,10 @@
 
 .mail-index{
-    height: 100vh;
+  flex-grow: 1;
+  padding: 2em;
+
+  margin: 0;
+  position: relative;
     background: var( --main-bg-color);
     display: grid;
     grid-template-columns: 0.5fr 5fr;
