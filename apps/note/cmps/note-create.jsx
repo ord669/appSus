@@ -6,15 +6,29 @@ export function NoteCreate() {
     return <section className='note-create' >
         <h1>Hello from note create</h1>
 
+        <a className="fa-solid a" href=""></a>
+        <a className="fa-solid image" href=""></a>
+        <a className="fa-brand youtube" href=""></a>
+        <a className="fa-solid list" href=""></a>
 
+
+        <form className="review-form">
+            <input type="text"
+                id="book-name"
+                name="bookName"
+                placeholder={'kkk'} />
+        </form>
+
+        {/* 
         <select onChange={ev => setCmpType(ev.target.value)}>
             <option value="note-txt">Note-Text</option>
             <option value="note-img">Note-Image</option>
             <option value="note-video">Note-Video</option>
             <option value="note-todos">Note-Todos</option>
         </select>
-        <DynamicCmp name="Puk" cmpType={cmpType} />
 
+    */}
+        <DynamicCmp name="Puk" cmpType={cmpType} />
 
         <hr />
     </section>
@@ -34,7 +48,15 @@ function DynamicCmp(props) {
 }
 
 function NoteTxt({ name }) {
-    return <h1>NoteTxt {name}</h1>
+    return <form className="review-form">
+        <input type="text"
+            id="book-name"
+            name="bookName"
+            placeholder={name} />
+        {/* // value={search}
+            // onChange={handleChange} */}
+    </form>
+    // <h1>NoteTxt {name}</h1> 
 }
 function NoteImg({ name }) {
     return <h1>NoteImg {name}</h1>
