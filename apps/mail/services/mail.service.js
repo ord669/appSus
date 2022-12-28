@@ -121,6 +121,7 @@ const email = [
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY)
+    
 
     if (!mails || !mails.length) {
         mails = []
@@ -132,7 +133,7 @@ function _createMails() {
         mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true))
         mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
 
-        storageService._save(MAILS_KEY, mails)
+        utilService.saveToStorage(MAILS_KEY, mails)
     }
 }
 
