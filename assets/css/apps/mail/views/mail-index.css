@@ -1,0 +1,24 @@
+
+.mail-index{
+    height: 100vh;
+    background: var( --main-bg-color);
+    display: grid;
+    grid-template-columns: 0.5fr 5fr;
+    grid-template-rows: 0.2fr 5fr;
+    grid-template-areas: 
+      "header header header header"
+      "sidebar main main main"
+  }
+
+
+
+.mail-filter {
+  grid-area: header;
+}
+.mail-list {
+  grid-area: main;
+}
+.mail-folder-list{
+  grid-area: sidebar;
+}
+
