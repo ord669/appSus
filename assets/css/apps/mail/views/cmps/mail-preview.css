@@ -1,4 +1,9 @@
 .mail-list tr {
+    width:100%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 1em 0 ;
     line-height: 1rem;
     border-radius: 25px;
     text-align: left;
@@ -11,6 +16,7 @@
 }
 
 .mail-list td {
+   
     height: 1rem;
     line-height: 1rem;
     padding: 0.4rem;

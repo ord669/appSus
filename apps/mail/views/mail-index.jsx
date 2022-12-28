@@ -7,17 +7,20 @@ import { MailFilter } from "../cmps/mail-filter.jsx";
 import { MailFolderList } from "../cmps/mail-folder-list.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 import { mailService } from "../services/mail.service.js";
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
+import { UserMsg } from "../../../cmps/user-msg.jsx";
+
 
 export function MailIndex() {
 
-    const [mails ,setMails] = useState(null)
+    const [mails, setMails] = useState(null)
     const [filterBy, setFilterBy] = useState('')
 
-    useEffect(()=>{
+    useEffect(() => {
         loadMails()
-    },[filterBy])
+    }, [filterBy])
 
-    
+
     function loadMails() {
         mailService.query(filterBy).then(setMails)
     }
@@ -25,9 +28,24 @@ export function MailIndex() {
 
     function onSetFilter(filterBy) {
         console.log('filterBy: ', filterBy);
-        
+
         setFilterBy(filterBy)
     }
+
+    function onRemoveMail(mailId) {
+        // console.log('mailId: ', mailId);
+        mailService.remove(mailId)
+            .then(() => {
+                const updatedMails = mails.filter(mail => mail.id !== mailId)
+                setMails(updatedMails)
+                showSuccessMsg('Mail removed')
+            })
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                showErrorMsg('Could not remove Mail')
+            })
+    }
+
 
     return <section className="mail-index">
 
@@ -36,11 +54,11 @@ export function MailIndex() {
         <MailFolderList />
         <MailCompose />
 
-        
-        {mails && <MailList mails={mails} />}
+
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} />}
 
 
-
+        <UserMsg />
 
 
     </section>
