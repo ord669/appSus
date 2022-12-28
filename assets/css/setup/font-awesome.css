@@ -15,6 +15,11 @@
     src: url("../../webfonts/fa-brands-400.ttf");
 }
 
+@font-face {
+    font-family: fa-regular;
+    src: url("../../webfonts/fa-regular-400.ttf");
+}
+
 
 .fa-brand::before {
     font-family: fa-brand;
@@ -26,6 +31,10 @@
 
 .fa-solid::before {
     font-family: fa-solid;
+}
+
+.fa-regular::before {
+    font-family: fa-regular;
 }
 
 
@@ -96,4 +105,16 @@
 
 .fa-brand.youtube::before {
     content: "\f167";
+}
+
+.fa-regular.lightbulb::before {
+    content: "\f0eb";
+}
+
+.fa-regular.bell::before {
+    content: "\f0f3";
+}
+
+.fa-solid.pen::before {
+    content: "\f304";
 }

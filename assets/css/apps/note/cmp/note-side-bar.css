@@ -1,0 +1,18 @@
+.note-side-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0.5em;
+    height: 25vh;
+}
+
+
+.note-side-bar a {
+    font-size: 1.5em;
+    padding: 1em;
+    border-radius: 50%;
+}
+
+.note-side-bar a:hover {
+    background-color: var(--note-bar-side);
+}

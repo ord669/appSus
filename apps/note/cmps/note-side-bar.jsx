@@ -2,6 +2,10 @@ export function NoteSideBar() {
 
 
     return <section className='note-side-bar' >
-        <h1>Hello from bar side</h1>
+        <a className="fa-regular lightbulb" href=""></a>
+        <a className="fa-regular bell" href=""></a>
+        <a className="fa-solid pen" href=""></a>
+        <a className="fa-solid inbox" href=""></a>
+        <a className="fa-solid trash" href=""></a>
     </section>
 }

@@ -3,11 +3,6 @@ import { DataTableRow } from './note-todo-table.jsx'
 const { useState, useEffect } = React
 
 export function NotePreview({ note }) {
-
-
-    console.log('note:', note)
-
-
     return <article className='note-preview' >
         <DynamicCmp
             type={note.type} info={note.info}
@@ -32,8 +27,8 @@ function DynamicCmp(props) {
 function NoteTxt({ info, val = '', onChangeVal }) {
     const { txt } = info
     return (
-        <div className="">
-            {txt}
+        <div className="note-txt">
+            <p>{txt}</p>
         </div>
     )
 
@@ -48,7 +43,7 @@ function NoteTodos({ info }) {
     const { label, todos } = info
 
     return (
-        <div>
+        <div className="note-doto">
             <h1>{label}</h1>
             <table className="todos-table">
                 <tbody>
@@ -60,9 +55,9 @@ function NoteTodos({ info }) {
     )
 
 }
-function NoteImg({ info, val = '', onChangeVal }) {
+function NoteImg({ info }) {
     const { title, url } = info
-    return <div>
+    return <div className="note-img">
         <h1>{title}</h1>
         <img src={url} alt={title} />
     </div>

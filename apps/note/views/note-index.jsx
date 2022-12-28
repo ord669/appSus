@@ -27,8 +27,11 @@ export function NoteIndex() {
 
     return <section className="note-index">
         <NoteFilter />
-        <NoteCreate />
-        <NoteList notes={notes} />
+        <main className="main-note-layout">
+            <NoteCreate />
+            <NoteList notes={notes} />
+
+        </main>
         <NoteSideBar />
 
     </section>
