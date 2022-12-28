@@ -19,9 +19,9 @@
 /* Mail */
 @import './apps/mail/views/mail-index.css';
 @import './apps/mail/views/mail-details.css';
-@import './apps/mail/views/mail-list.css';
-@import './apps/mail/views/mail-folder-list.css';
-@import './apps/mail/views/mail-preview.css';
+@import './apps/mail/views/cmps/mail-list.css';
+@import './apps/mail/views/cmps/mail-folder-list.css';
+@import './apps/mail/views/cmps/mail-preview.css';
 
 
 /* Cmps */
