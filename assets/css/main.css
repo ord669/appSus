@@ -30,3 +30,12 @@
 @import './cmps/app-header.css';
 
 /* @import './apps/mail/cmps/mail-list.css'; */
+
+
+
+
+
+
+/* Note */
+@import './apps/note/cmp/note-preview.css';
+@import './apps/note/cmp/note-list.css';

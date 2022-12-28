@@ -5,7 +5,7 @@ export function NoteList({ notes }) {
     console.log('notes from note list:', notes)
 
     return <section className='note-list-section' >
-        <ul className='note-list'>
+        <ul className='note-list clean-list'>
             {
                 notes.map(note => <li key={note.id}>
                     <NotePreview note={note} />
@@ -13,8 +13,6 @@ export function NoteList({ notes }) {
             }
 
         </ul>
-        <h1>Hello from note list</h1>
-
     </section>
 
 }
