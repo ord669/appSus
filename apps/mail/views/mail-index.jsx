@@ -14,9 +14,11 @@ import { UserMsg } from "../../../cmps/user-msg.jsx";
 export function MailIndex() {
 
     const [mails, setMails] = useState(null)
-    const [filterBy, setFilterBy] = useState('')
+    const [filterBy, setFilterBy] = useState()
+    const [isCompose,setIsCompose]= useState(true)
 
     useEffect(() => {
+        console.log('filterBy:', filterBy)
         loadMails()
     }, [filterBy])
 
@@ -50,11 +52,11 @@ export function MailIndex() {
 
         <MailFilter onSetFilter={onSetFilter} />
 
-        <MailFolderList />
-        <MailCompose />
+        <MailFolderList setIsCompose={setIsCompose} setFilterBy={setFilterBy} />
 
+       {isCompose && <MailCompose setIsCompose={setIsCompose} setFilterBy={setFilterBy}/>}
 
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} />}
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  />}
 
         
         <UserMsg />

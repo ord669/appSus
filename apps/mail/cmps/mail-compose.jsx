@@ -4,7 +4,7 @@ const { useState, useEffect } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
 
-export function MailCompose() {
+export function MailCompose({setIsCompose,setFilterBy}) {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const { mailId } = useParams()
@@ -29,15 +29,23 @@ export function MailCompose() {
         mailToEdit['sentAt'] = Date.now()
         mailService.save(mailToEdit).then((mail) => {
             console.log('mail saved', mail);
+            setFilterBy((prevFilter) => ({ ...prevFilter, status: 'sent' }))
+
             // showSuccessMsg('Mail saved!')
+            setIsCompose(false)
+
             navigate('/mail')
         })
+    }
+    function onCancel(){
+        setIsCompose(false)
+        navigate('/mail')
     }
 
 
     return <section className="mail-compose">
         <h2>New Message</h2>
-        <form onSubmit={onSaveMail}>
+        <form  onSubmit={onSaveMail}>
             <label htmlFor="subject">Subject : </label>
             <input type="text"
                 name="subject"
@@ -73,12 +81,12 @@ export function MailCompose() {
                 onChange={handleChange}
             /> */}
 
-            <div>
-                <button>{mailId ? 'Save' : 'Send'}</button>
-                <Link to="/mail">Cancel</Link>
+            <div className="mail-compose-btn">
+                <button >{mailId ? 'Save' : 'Send'}</button>
+                <button onClick={onCancel}>Cancel</button>
+             
             </div>
         </form>
-        mail-compose
     </section>
 
 }
