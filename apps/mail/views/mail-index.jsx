@@ -15,7 +15,7 @@ export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     const [filterBy, setFilterBy] = useState()
-    const [isCompose,setIsCompose]= useState(true)
+    const [isCompose, setIsCompose] = useState(true)
 
     useEffect(() => {
         console.log('filterBy:', filterBy)
@@ -33,6 +33,8 @@ export function MailIndex() {
         setFilterBy(filterBy)
     }
 
+
+
     function onRemoveMail(mailId) {
         // console.log('mailId: ', mailId);
         mailService.remove(mailId)
@@ -48,17 +50,36 @@ export function MailIndex() {
     }
 
 
+    // filters
+    function setFilters(key) {
+        switch (key) {
+            case 'sent':
+                setFilterBy((prevFilter) => ({ ...prevFilter, status: 'sent' }))
+                break;
+
+            case 'inbox':
+                setFilterBy((prevFilter) => ({ ...prevFilter, status: 'inbox' }))
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
+
     return <section className="mail-index">
 
         <MailFilter onSetFilter={onSetFilter} />
 
-        <MailFolderList setIsCompose={setIsCompose} setFilterBy={setFilterBy} />
+        <MailFolderList setIsCompose={setIsCompose} setFilters={setFilters} />
 
-       {isCompose && <MailCompose setIsCompose={setIsCompose} setFilterBy={setFilterBy}/>}
+        {isCompose && <MailCompose setIsCompose={setIsCompose} setFilters={setFilters} />}
 
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  />}
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  setIsCompose={setIsCompose}/>}
 
-        
+
         <UserMsg />
 
 

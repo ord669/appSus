@@ -4,12 +4,25 @@ const { useState, useEffect } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
 
-export function MailCompose({setIsCompose,setFilterBy}) {
+export function MailCompose({setIsCompose,setFilters}) {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const { mailId } = useParams()
 
+    useEffect(() => {
+        if (!mailId) return
+        loadMail()
+    }, [mailId])
 
+
+    function loadMail() {
+        mailService.get(mailId)
+            .then((mail) => setMailToEdit(mail))
+            .catch((err) => {
+                console.log('Had issues in mail details', err)
+                navigate('/mail')
+            })
+    }
 
 
     function handleChange({ target }) {
@@ -29,8 +42,7 @@ export function MailCompose({setIsCompose,setFilterBy}) {
         mailToEdit['sentAt'] = Date.now()
         mailService.save(mailToEdit).then((mail) => {
             console.log('mail saved', mail);
-            setFilterBy((prevFilter) => ({ ...prevFilter, status: 'sent' }))
-
+            setFilters('sent')
             // showSuccessMsg('Mail saved!')
             setIsCompose(false)
 
@@ -51,7 +63,7 @@ export function MailCompose({setIsCompose,setFilterBy}) {
                 name="subject"
                 id="subject"
                 placeholder="Enter subject..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.subject}
                 onChange={handleChange}
             />
 
@@ -60,7 +72,7 @@ export function MailCompose({setIsCompose,setFilterBy}) {
                 name="to"
                 id="to"
                 placeholder="Recipients..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.to}
                 onChange={handleChange}
             />
 
@@ -69,7 +81,7 @@ export function MailCompose({setIsCompose,setFilterBy}) {
                 name="body"
                 id="body"
                 placeholder="Enter subject..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.body}
                 onChange={handleChange}
             />
             {/* <label htmlFor="maxSpeed">Max speed : </label>
