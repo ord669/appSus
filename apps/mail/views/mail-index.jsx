@@ -14,6 +14,10 @@ export function MailIndex() {
         <MailCompose />
         <MailList />
 
-        </section>
+
+
+
+
+    </section>
 }
 
