@@ -47,6 +47,19 @@ export function NoteIndex() {
             })
     }
 
+    function onChangeBgc(updateBgcNote) {
+        // console.log(':', bgc)
+        console.log(':', updateBgcNote)
+        noteService.save(updateBgcNote)
+            .then(() => loadNotes())
+            // showSuccessMsg('Book saved!')
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                // showErrorMsg('Could not remove car')
+            })
+
+
+    }
 
     console.log('notes:', notes)
 
@@ -54,7 +67,7 @@ export function NoteIndex() {
         <NoteFilter />
         <main className="main-note-layout">
             <NoteCreate onSaveNote={onSaveNote} />
-            {notes && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
+            {notes && <NoteList notes={notes} onRemoveNote={onRemoveNote} onChangeBgc={onChangeBgc} />}
 
         </main>
         <NoteSideBar />

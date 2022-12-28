@@ -38,6 +38,9 @@ function getEmptyNote(type = 'note-txt', txt = '') {
         isPinned: false,
         info: {
             txt: txt,
+        },
+        style: {
+            backgroundColor: "#fff"
         }
     }
 }
@@ -56,6 +59,9 @@ function _createNotes() {
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    backgroundColor: "#fff"
                 }
             },
             {
@@ -78,6 +84,9 @@ function _createNotes() {
                         { txt: "Driving liscence", doneAt: null, id: storageService._makeId() },
                         { txt: "Coding power", doneAt: 187111111, id: storageService._makeId() }
                     ]
+                },
+                style: {
+                    backgroundColor: "#fff"
                 }
             }
         ]
