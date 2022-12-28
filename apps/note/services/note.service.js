@@ -31,7 +31,7 @@ function getNotes() {
             id: "n102",
             type: "note-img",
             info: {
-                url: "http://some-img/me",
+                url: "../../../assets/img/audi.jpg",
                 title: "Bobi and Me"
             },
             style: {

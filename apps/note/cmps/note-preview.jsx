@@ -9,7 +9,6 @@ export function NotePreview({ note }) {
 
 
     return <article className='note-preview' >
-        <h1>Hello from note preview</h1>
         <DynamicCmp
             type={note.type} info={note.info}
         />
@@ -32,28 +31,28 @@ function DynamicCmp(props) {
 
 function NoteTxt({ info, val = '', onChangeVal }) {
     const { txt } = info
-    console.log('txt:', txt)
-    console.log('info:', info)
-
-
     return (
-        <div>
+        <div className="">
             {txt}
         </div>
     )
 
 }
+
+function onRemoveTodo(todoId) {
+    console.log(':', todoId)
+
+}
+
 function NoteTodos({ info }) {
     const { label, todos } = info
-    console.log('label:', label)
-    console.log('todos:', todos)
 
     return (
         <div>
-            <p>{label}</p>
-            <table>
+            <h1>{label}</h1>
+            <table className="todos-table">
                 <tbody>
-                    {todos.map(todo => <DataTableRow key={todo.id} todo={todo} />)}
+                    {todos.map(todo => <DataTableRow key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} />)}
 
                 </tbody>
             </table>
@@ -62,5 +61,10 @@ function NoteTodos({ info }) {
 
 }
 function NoteImg({ info, val = '', onChangeVal }) {
+    const { title, url } = info
+    return <div>
+        <h1>{title}</h1>
+        <img src={url} alt={title} />
+    </div>
 
 }
