@@ -1,4 +1,24 @@
+
+@font-face {
+    font-family: roboto;
+    src: url(/assets/fonts/roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: robotoBold;
+    src: url(/assets/fonts/roboto/Roboto-Bold.ttf);
+}
+
+
+html{
+    font-family: roboto, serif;
+    color: var(--body-font-color);
+    line-height: 1.5;
+
+}
+
 body {
+    font-size: 0.875rem;
     margin: 0;
 }
 

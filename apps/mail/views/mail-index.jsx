@@ -1,5 +1,5 @@
 import { MailCompose } from "../cmps/mail-compose.jsx";
-import { MailDetails } from "../cmps/mail-details.jsx";
+import { MailDetails } from "./mail-details.jsx";
 import { MailFilter } from "../cmps/mail-filter.jsx";
 import { MailFolderList } from "../cmps/mail-folder-list.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
@@ -13,7 +13,7 @@ export function MailIndex() {
         <MailFolderList />
         <MailCompose />
         <MailList />
-        <MailDetails />
+
         </section>
 }
 
