@@ -18,9 +18,10 @@ export function NoteIndex() {
 
 
     function loadNotes() {
-        const noteFromService = noteService.getNotes()
-        console.log('motess:', noteFromService)
-        setNotes(noteFromService)
+        noteService.query()
+            .then((notes) => {
+                setNotes(notes)
+            })
     }
 
     console.log('notes:', notes)
