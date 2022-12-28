@@ -17,6 +17,7 @@ export const mailService = {
     getNextMailId,
     getDefaultFilter,
     addNewMail,
+    getEmptyMail,
 
 }
 
@@ -65,6 +66,20 @@ function save(mail) {
     }
 }
 
+
+function getEmptyMail() {
+    return {
+        subject:'',
+        body:'',
+        isRead:false,
+        sentAt: 1551133930594,
+        removedAt: null,
+        // inbox
+        from: '',
+        // sent
+        to: ''
+    }
+}
 // function save(mail) {
 //     if (mail.id) {
 //         return storageService.put(MAILS_KEY, mail)
@@ -153,19 +168,18 @@ function _createMail(subject, body, isRead) {
 }
 
 
-function addNewMail(subject, body, isRead) {
-    save({
+function addNewMail(subject, body, isRead,from = 'momo@momo.com',to = 'user@appsus.com' ) {
+    return {
         subject,
         body,
         isRead,
-        sentAt: 1551133930594,
+        sentAt,
         removedAt: null,
         // inbox
-        from: 'momo@momo.com',
+        from,
         // sent
-        to: 'user@appsus.com'
+        to,
     }
-    )
 }
 
 

@@ -51,6 +51,8 @@ img {
     object-fit: cover;
 }
 
-button {
-    cursor: pointer;
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

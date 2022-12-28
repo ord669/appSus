@@ -27,7 +27,6 @@ export function MailIndex() {
 
 
     function onSetFilter(filterBy) {
-        console.log('filterBy: ', filterBy);
 
         setFilterBy(filterBy)
     }
@@ -57,7 +56,7 @@ export function MailIndex() {
 
         {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} />}
 
-
+        
         <UserMsg />
 
 
