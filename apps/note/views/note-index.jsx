@@ -10,7 +10,7 @@ import { noteService } from '../services/note.service.js';
 
 export function NoteIndex() {
 
-    const [notes, setNotes] = useState([])
+    const [notes, setNotes] = useState(null)
 
     useEffect(() => {
         loadNotes()
@@ -19,9 +19,46 @@ export function NoteIndex() {
 
     function loadNotes() {
         noteService.query()
-            .then((notes) => {
-                setNotes(notes)
+            .then(setNotes)
+
+    }
+
+    function onSaveNote(NoteToAdd) {
+        noteService.save(NoteToAdd)
+            .then(() => loadNotes())
+            // showSuccessMsg('Book saved!')
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                // showErrorMsg('Could not remove car')
             })
+    }
+
+    function onRemoveNote(noteId) {
+
+        noteService.remove(noteId)
+            .then(() => {
+                const updatedNote = notes.filter(note => note.id !== noteId)
+                setNotes(updatedNote)
+                // showSuccessMsg('Car removed')
+            })
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                // showErrorMsg('Could not remove car')
+            })
+    }
+
+    function onChangeBgc(updateBgcNote) {
+        // console.log(':', bgc)
+        console.log(':', updateBgcNote)
+        noteService.save(updateBgcNote)
+            .then(() => loadNotes())
+            // showSuccessMsg('Book saved!')
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                // showErrorMsg('Could not remove car')
+            })
+
+
     }
 
     console.log('notes:', notes)
@@ -29,8 +66,8 @@ export function NoteIndex() {
     return <section className="note-index">
         <NoteFilter />
         <main className="main-note-layout">
-            <NoteCreate />
-            <NoteList notes={notes} />
+            <NoteCreate onSaveNote={onSaveNote} />
+            {notes && <NoteList notes={notes} onRemoveNote={onRemoveNote} onChangeBgc={onChangeBgc} />}
 
         </main>
         <NoteSideBar />
