@@ -1,4 +1,5 @@
 import { storageService } from '../../../services/async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 
 const NOTES_KEY = 'notesDB'
@@ -8,12 +9,17 @@ _createNotes()
 export const noteService = {
     query,
     save,
-    getEmptyNote
+    getEmptyNote,
+    remove
 }
 
 
 function query() {
     return storageService.query(NOTES_KEY)
+}
+
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId)
 }
 
 function save(note) {
@@ -31,7 +37,7 @@ function getEmptyNote(type = 'note-txt', txt = '') {
         type,
         isPinned: false,
         info: {
-            txt,
+            txt: txt,
         }
     }
 }
@@ -41,7 +47,7 @@ function getEmptyNote(type = 'note-txt', txt = '') {
 function _createNotes() {
     console.log('hi:')
 
-    let notes = query()
+    let notes = utilService.loadFromStorage(NOTES_KEY)
     if (!notes || !notes.length) {
         notes = [
             {

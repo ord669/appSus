@@ -2,7 +2,7 @@ const { useRef, useState, useEffect } = React
 
 import { noteService } from '../services/note.service.js'
 
-export function NoteCreate() {
+export function NoteCreate({ onSaveNote }) {
     const [cmpType, setCmpType] = useState('Hello')
     const [NoteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
 
@@ -12,22 +12,17 @@ export function NoteCreate() {
 
         let { value, name: field } = target
         console.log('value:', value)
-        setNoteToAdd((prevTxt) => ({ ...prevTxt, [field]: value }))
+        setNoteToAdd((prevTxt) => ({ ...prevTxt, info: { ...prevTxt.info, [field]: value } }))
     }
 
-    function onSaveNote(ev) {
+    function onSubmitNote(ev) {
         ev.preventDefault()
-        noteService.save(NoteToAdd)
-            .then((note) => {
-                setNoteToAdd(note)
-                console.log('note saved', note);
-                // showSuccessMsg('Book saved!')
-                // navigate('/book')
-            })
+        onSaveNote(NoteToAdd)
     }
+
 
     return <section className='note-create' >
-        <form onSubmit={onSaveNote} className="add-note">
+        <form onSubmit={onSubmitNote} className="add-note">
             <input type="text"
                 id="txt"
                 name="txt"
