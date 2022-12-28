@@ -7,11 +7,12 @@ export function MailFolderList() {
         <a className="fa plus" href=""></a>
         <a className="fa file" href=""></a>
 
-        <i class="fa sent"></i>
+        <a className="fa sent" href=""></a>
         <a className="fa-solid inbox" href=""></a>
         <a className="fa envelope" href=""></a>
 
         <a className="fa envelope-open" href=""></a>
+        <a className="fa-solid trash" href=""></a>
 
         </section>
 
