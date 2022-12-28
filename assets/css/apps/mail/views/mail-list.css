@@ -1,0 +1,8 @@
+table {
+  height: 100%;
+  border-radius: 25px;
+  background-color: var(--secondery-bg-color);
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}

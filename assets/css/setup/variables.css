@@ -1,6 +1,9 @@
 :root {
+
+        /* pallete */
+
     --main-bg-color: #f6f8fc;
-     
+    --secondery-bg-color: white;
 
     --body-font-color: #202124;
     --body-font-color2: #747775;

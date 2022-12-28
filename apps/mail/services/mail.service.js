@@ -1,13 +1,70 @@
-console.log('Hi')
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/storage.service.js'
+
+
+const MAILS_KEY = 'mailsDB'
 
 
 
-const email = {
-    id: 'e101', subject: 'Miss you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false, sentAt: 1551133930594,
-    to: 'momo@momo.com'
+export const mailService = {
+    // query,
+    // get,
+    // remove,
+    // save,
+    getMails,
+    getLoggedinUser,
+    getCriteria,
+
 }
+
+
+
+
+
+const email = [
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(), 
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false, sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
+]
 
 const loggedinUser = {
     email: 'user@appsus.com',
@@ -21,4 +78,17 @@ const criteria = {
     isRead: true, // (optional property, if missing: show all) 
     isStared: true, // (optional property, if missing: show all) 
     lables: ['important', 'romantic'] // has any of the labels 
+}
+
+
+function getMails() {
+    return email
+}
+
+function getLoggedinUser() {
+    return loggedinUser
+}
+
+function getCriteria() {
+    return criteria
 }
