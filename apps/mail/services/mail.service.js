@@ -18,12 +18,13 @@ export const mailService = {
     getDefaultFilter,
     addNewMail,
     getEmptyMail,
+    createNewMail,
 
 }
 
 
 function query(criteria = getDefaultFilter()) {
-    console.log('criteria: ', criteria);
+    
 
     return storageService.query(MAILS_KEY)
         .then(mails => {
@@ -46,7 +47,7 @@ function query(criteria = getDefaultFilter()) {
             // if (filterBy.minSpeed) {
             //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
             // }
-            console.log('mails:', mails)
+            
             return mails
         })
 }
@@ -80,7 +81,7 @@ function save(mail) {
 
 function getEmptyMail() {
     return {
-        subject:'inbox',
+        subject:'',
         body:'',
         isRead:false,
         sentAt: 1551133930594,
@@ -193,8 +194,12 @@ function addNewMail(subject, body, isRead,from = 'momo@momo.com',to = 'user@apps
     }
 }
 
-
-// addNewMail('subject', 'body', 'isRead')
+function createNewMail(mailToEdit){
+    const {email:from} = getLoggedinUser()
+    mailToEdit['from'] = from
+    mailToEdit['sentAt'] = Date.now()
+    return {...mailToEdit}
+}
 
 
 

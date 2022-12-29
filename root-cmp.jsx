@@ -19,9 +19,10 @@ export function App() {
                 <Route path="/about" element={<About />} />
 
 
-                <Route path="/mail" element={<MailIndex />} />
-                <Route path="/mail/:mailId" element={<MailIndex />} />
-                <Route path="/mail/details" element={<MailDetails />} />
+
+                <Route path="/mail/:folder" element={<MailIndex />} >
+                    <Route path="/mail/:folder/:mailId" element={<MailDetails />} />
+                </Route>
 
 
                 <Route path="/note" element={<NoteIndex />} />

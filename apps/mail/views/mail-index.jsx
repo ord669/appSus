@@ -1,7 +1,8 @@
 const { useState, useEffect } = React
+const { useParams } = ReactRouterDOM
+const { Outlet, Link, NavLink } = ReactRouterDOM
 
 
-import { storageService } from "../../../services/async-storage.service.js";
 import { MailCompose } from "../cmps/mail-compose.jsx";
 import { MailFilter } from "../cmps/mail-filter.jsx";
 import { MailFolderList } from "../cmps/mail-folder-list.jsx";
@@ -13,31 +14,28 @@ import { UserMsg } from "../../../cmps/user-msg.jsx";
 
 export function MailIndex() {
 
-    const [mails, setMails] = useState(null)
+    const [mails, setMails] = useState([])
     const [filterBy, setFilterBy] = useState()
-
     const [isCompose, setIsCompose] = useState(true)
+    const { folder,mailId } = useParams()
 
     useEffect(() => {
-        console.log('filterBy:', filterBy)
         loadMails()
     }, [filterBy])
 
+
+    useEffect(() => {
+        setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
+    }, [folder])
 
     function loadMails() {
         mailService.query(filterBy).then(setMails)
     }
 
-
     function onSetFilter(filterBy) {
-
         setFilterBy(filterBy)
     }
-
-
-
     function onRemoveMail(mailId) {
-        // console.log('mailId: ', mailId);
         mailService.remove(mailId)
             .then(() => {
                 const updatedMails = mails.filter(mail => mail.id !== mailId)
@@ -45,41 +43,34 @@ export function MailIndex() {
                 showSuccessMsg('Mail removed')
             })
             .catch((err) => {
-                console.log('Had issues removing', err)
                 showErrorMsg('Could not remove Mail')
             })
     }
 
 
-    // filters
-    function setFilters(key) {
-        switch (key) {
-            case 'sent':
-                setFilterBy((prevFilter) => ({ ...prevFilter, status: key }))
-                break;
-
-            case 'inbox':
-                setFilterBy((prevFilter) => ({ ...prevFilter, status: key }))
-                break;
-
-            default:
-                break;
-        }
-
-
+    function onUpdateMail(mailToUpdate) {
+        mailService.save(mailToUpdate).then((mailToUpdateWithId) => {
+            const updatedMails = mails.map(mail => mail.id === mailToUpdate.id ? mailToUpdate : mail)
+            if (updatedMails.every(mail => mail.id !== mailToUpdate.id)) updatedMails.push(mailToUpdateWithId)
+            setMails(updatedMails)
+            showSuccessMsg('Mail Updated')
+            setIsCompose(false)
+        })
     }
-
 
     return <section className="mail-index">
 
         <MailFilter onSetFilter={onSetFilter} />
 
-        <MailFolderList setIsCompose={setIsCompose} setFilters={setFilters} />
+        <MailFolderList setIsCompose={setIsCompose} />
+<div>
+<Outlet />
 
-        {isCompose && <MailCompose setIsCompose={setIsCompose} setFilters={setFilters} />}
+</div>
+        {isCompose && <MailCompose setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
 
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  setIsCompose={setIsCompose} setFilters={setFilters}/>}
-
+        {!mailId&&mails.length && <MailList mails={mails} onRemoveMail={onRemoveMail} setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
+        
 
         <UserMsg />
 
