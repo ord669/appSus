@@ -7,6 +7,7 @@ export function MailFolderList({setIsCompose}) {
 
     return <section className="mail-folder-list">
         <button onClick={()=>{setIsCompose(true)}} className="clean-btn fa-solid pen " ><span className="mail-folder-list-pen"></span></button>
+        <button onClick={()=>{setIsCompose(true)}} className="clean-btn fa-solid box-archive" ></button>
         
         <button onClick={()=>{navigate('/mail/inbox')}} className="clean-btn  fa-solid inbox " ><span className="mail-folder-list-inbox"></span></button>
         {/* <button onClick={()=>{setFilterBy()}} className="clean-btn  fa-solid fa-star" ></button> */}

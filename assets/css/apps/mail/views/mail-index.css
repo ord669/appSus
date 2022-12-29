@@ -23,6 +23,9 @@
 .mail-list {
   grid-area: main;
 }
+.mail-details {
+  grid-area: main;
+}
 .mail-folder-list{
   grid-area: sidebar;
 }
