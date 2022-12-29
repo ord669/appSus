@@ -6,23 +6,57 @@
     border-bottom: rgb(204, 204, 206) 1px solid;
 }
 
-.add-note {
+.add-note-form {
     margin: 0 auto;
     text-align: center;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-content: center;
+    align-content: center; */
+    width: fit-content;
+    position: relative;
+}
+
+.add-note-input::placeholder {
+    font-size: 1.25em;
 }
 
 
-.add-note textarea {
+.add-note-form textarea {
     width: 50vw;
     padding: 10px;
-    margin-inline-end: 10px;
-    /* height: 100px; */
+    height: 50px;
     /* resize: none; */
+    transition: height .10s ease-in;
+    box-shadow: -1px 1px 4px 0px #c2c3c3;
+    border: solid 1px #c2c3c3;
+    border-radius: 5px;
+}
+
+.add-note-form textarea:focus {
+    height: 100px;
+    /* box-shadow: -1px 1px 4px 0px #c2c3c3; */
+    outline: none;
+}
+
+.add-note-form textarea:focus+.btn-add-note {
+    display: block;
+
 }
 
 .btn-add-note {
-    padding-inline: 10px;
+    display: none;
+    /* padding-inline: 10px; */
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    color: inherit;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: #6b6b6b;
+}
+
+
+
+.btn-add-note:hover {
+    background-color: rgba(201, 201, 201, 0.226);
 }

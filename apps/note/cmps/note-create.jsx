@@ -6,14 +6,10 @@ export function NoteCreate({ onSaveNote }) {
     const [cmpType, setCmpType] = useState('Hello')
     const [NoteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
 
-
-
     function handleChange({ target }) {
-
         let { value, name: field } = target
         console.log('value:', value)
         setNoteToAdd((prevTxt) => ({ ...prevTxt, info: { ...prevTxt.info, [field]: value } }))
-
     }
 
     function onSubmitNote(ev) {
@@ -24,16 +20,16 @@ export function NoteCreate({ onSaveNote }) {
 
 
     return <section className='note-create' >
-        <form onSubmit={onSubmitNote} className="add-note">
+        <form onSubmit={onSubmitNote} className="add-note-form">
 
-            <textarea
+            <textarea className="add-note-input"
                 id="txt"
                 name="txt"
                 placeholder="Enter note"
                 value={NoteToAdd.info.txt}
                 onChange={handleChange}>
             </textarea>
-            <button className="btn-add-note">Add Note</button>
+            <button className="btn-add-note clean-btn">Add Note</button>
         </form>
 
 

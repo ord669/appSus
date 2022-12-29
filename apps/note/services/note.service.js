@@ -16,7 +16,7 @@ export const noteService = {
 
 
 function query() {
-    return storageService.query(NOTES_KEY)
+    return storageService.query(NOTES_KEY).then((notes) => notes.reverse())
 }
 
 function remove(noteId) {
@@ -24,8 +24,6 @@ function remove(noteId) {
 }
 
 function save(note) {
-    console.log('he:')
-
     if (note.id) {
         return storageService.put(NOTES_KEY, note)
     } else {

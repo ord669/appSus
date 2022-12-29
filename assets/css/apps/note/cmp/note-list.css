@@ -1,14 +1,41 @@
+.note-list-section {
+    margin: 0 auto;
+}
+
 .note-list {
     padding: 20px;
+    /* display: flex;
+    flex-direction: row; */
+    margin: 0 auto;
+    width: 80vw;
+    /* flex-wrap: wrap; */
+    columns: 220px 4;
+}
+
+.note-list:first-child {
+    margin-top: 0;
 }
 
 .note {
     background-color: aquamarine;
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 10px;
-    width: 300px;
-    border: 1px solid rgb(204, 204, 206);
+    border: 1px solid #e0e0e0;
+    height: fit-content;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    border-radius: 5px;
 
+}
+
+.note:hover {
+    box-shadow: -1px 1px 4px 0px #c2c3c3;
+    border-color: #c2c3c3;
+    cursor: pointer;
+}
+
+.note:hover .note-edit-menu {
+    opacity: 1
 }
 
 .note h1 {
@@ -16,9 +43,9 @@
     margin-bottom: 5px;
 }
 
-.note button {
+/* .note button {
     border: none;
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
-}
+} */
