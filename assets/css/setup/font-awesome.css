@@ -122,3 +122,7 @@
 .fa-solid.box-archive::before {
     content: "\f187";
 }
+
+.fa-solid.arrow-left::before {
+    content: "\f060";
+}
