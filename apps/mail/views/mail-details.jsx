@@ -1,10 +1,9 @@
-import { MailCompose } from "../cmps/mail-compose.jsx";
 
 export function MailDetails() {
 
-    return <section className="mail-details">
-        mail-details
-        <MailCompose />
-        </section>
+        return <section className="mail-details">
+            
+        <h1>mail-details</h1>
+    </section>
 
 }

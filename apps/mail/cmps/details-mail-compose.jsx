@@ -3,7 +3,7 @@ const { useNavigate, useParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailCompose({setIsCompose,onUpdateMail}) {
+export function DetailsMailCompose({setIsCompose,onUpdateMail}) {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const { mailId } = useParams()
@@ -51,7 +51,7 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
     }
 
 
-    return <section className="mail-compose">
+    return <section className="details-mail-compose">
         <h2>New Message</h2>
         <form  onSubmit={onSaveMail}>
             <label htmlFor="subject">Subject : </label>
@@ -59,7 +59,7 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
                 name="subject"
                 id="subject"
                 placeholder="Enter subject..."
-                // value={mailToEdit.subject}
+                value={mailToEdit.subject}
                 onChange={handleChange}
             />
 
@@ -68,7 +68,7 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
                 name="to"
                 id="to"
                 placeholder="Recipients..."
-                // value={mailToEdit.to}
+                value={mailToEdit.to}
                 onChange={handleChange}
             />
 
@@ -77,7 +77,7 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
                 name="body"
                 id="body"
                 placeholder="Enter subject..."
-                // value={mailToEdit.body}
+                value={mailToEdit.body}
                 onChange={handleChange}
             />
             {/* <label htmlFor="maxSpeed">Max speed : </label>

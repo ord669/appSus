@@ -1,9 +1,7 @@
 import { MailPreview } from "./mail-preview.jsx";
 
-export function MailList({ mails, onRemoveMail, setIsCompose, setFilters }) {
-
-
-    return <section className="mail-list">
+export function MailList({ mails, onRemoveMail, setIsCompose,onUpdateMail,setIsUserDetails }) {
+        return <section className="mail-list">
         <table>
             <thead></thead>
             <tbody>
@@ -12,6 +10,8 @@ export function MailList({ mails, onRemoveMail, setIsCompose, setFilters }) {
                     mail={mail}
                     onRemoveMail={onRemoveMail}
                     setIsCompose={setIsCompose}
+                    onUpdateMail={onUpdateMail}
+                    setIsUserDetails={setIsUserDetails}
                 />)}
 
             </tbody>
