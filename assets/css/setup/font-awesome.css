@@ -86,6 +86,7 @@
 
 
 
+
 .fa-solid.thumbtack::before {
     content: "\f08d";
 }
@@ -124,4 +125,8 @@
 
 .fa-solid.pen::before {
     content: "\f304";
+}
+
+.fa-solid.box-archive::before {
+    content: "\f187";
 }
