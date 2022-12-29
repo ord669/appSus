@@ -61,14 +61,14 @@ function _createNotes() {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "#fff"
+                    backgroundColor: "#ffc7c7"
                 }
             },
             {
                 id: "n102",
                 type: "note-img",
                 info: {
-                    url: "../../../assets/img/audi.jpg",
+                    url: "./assets/img/audi.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -86,7 +86,7 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#ffffff"
+                    backgroundColor: "#a3f0a8"
                 }
             }
         ]
