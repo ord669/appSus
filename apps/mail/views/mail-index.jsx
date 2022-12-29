@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-const { useParams } = ReactRouterDOM
+const { useParams,useNavigate } = ReactRouterDOM
 const { Outlet, Link, NavLink } = ReactRouterDOM
 
 
@@ -18,19 +18,25 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState()
     const [isCompose, setIsCompose] = useState(true)
     const { folder,mailId } = useParams()
+    const navigate = useNavigate()
 
+    
+    
     useEffect(() => {
+        
+        
         loadMails()
     }, [filterBy])
-
-
+    
+    
     useEffect(() => {
         setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
     }, [folder])
-
+    
     function loadMails() {
         mailService.query(filterBy).then(setMails)
     }
+    
 
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
@@ -48,19 +54,28 @@ export function MailIndex() {
     }
 
 
-    function onUpdateMail(mailToUpdate) {
+    function onUpdateMail(mailToUpdate,nav) {
+        
         mailService.save(mailToUpdate).then((mailToUpdateWithId) => {
+            
             const updatedMails = mails.map(mail => mail.id === mailToUpdate.id ? mailToUpdate : mail)
+            
             if (updatedMails.every(mail => mail.id !== mailToUpdate.id)) updatedMails.push(mailToUpdateWithId)
+            
             setMails(updatedMails)
             showSuccessMsg('Mail Updated')
             setIsCompose(false)
+            if(nav) navigate(nav)
+            
+
         })
     }
 
+
+console.log('mails: ', mails);
     return <section className="mail-index">
 
-        <MailFilter onSetFilter={onSetFilter} />
+        
 
         <MailFolderList setIsCompose={setIsCompose} />
 <div>
@@ -69,7 +84,7 @@ export function MailIndex() {
 </div>
         {isCompose && <MailCompose setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
 
-        {!mailId&&mails.length && <MailList mails={mails} onRemoveMail={onRemoveMail} setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
+        {!mailId&&mails.length && <MailList mails={mails} onRemoveMail={onRemoveMail} setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} onSetFilter={onSetFilter}/>}
         
 
         <UserMsg />

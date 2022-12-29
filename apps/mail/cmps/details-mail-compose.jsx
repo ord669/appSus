@@ -40,8 +40,7 @@ export function DetailsMailCompose({setIsCompose,onUpdateMail}) {
     function onSaveMail(ev) {
         ev.preventDefault()
         const newMail = mailService.createNewMail(mailToEdit)
-        onUpdateMail(newMail)
-        navigate('/mail/sent')
+        onUpdateMail(newMail,'/mail/sent')
 
     }
     

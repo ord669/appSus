@@ -1,11 +1,21 @@
 .mail-folder-list{
     padding: 0 2em;
+    width: 30vw;
     height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    position: fixed;
+    width: 83px;
+    height: 100%;
+    z-index: 1;
+    background: var(--main-bg-color);
+    transition: width 400ms;
+    
 }
 
-.mail-folder-list a {
-    width:100%;
+.mail-folder-list:hover {
+    width: 250px;
 }
+
+
