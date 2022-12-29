@@ -81,7 +81,7 @@ export function NoteIndex() {
         <main className="main-note-layout">
             <NoteCreate onSaveNote={onSaveNote} />
             <div className="nested-route">
-                <Outlet />
+                <Outlet context={{ onUpdateNote }} />
             </div>
             {notes && <NoteList notes={notes} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} onClickNote={onClickNote} />}
         </main>
