@@ -9,6 +9,7 @@ export function NoteSideBar() {
             <a className="fa-solid pen" href=""></a>
             <a className="fa-solid inbox" href=""></a>
             <a className="fa-solid trash" href=""></a>
+            <a className="fa-solid box-archive" href=""></a>
         </div>
     </section>
 }

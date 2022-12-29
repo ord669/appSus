@@ -6,7 +6,8 @@ header {
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 10px 0;
+    align-items: center;
 }
 
 nav a {
@@ -14,11 +15,22 @@ nav a {
 }
 
 nav a:active {
-    color: purple;
+    color: #209cee;
 }
 
 nav a.active {
-    color: darkblue;
+    color: #209cee;
     font-weight: bold;
-    text-decoration: overline;
+    /* text-decoration: overline; */
+}
+
+.logo {
+    padding-inline: 10px;
+
+}
+
+.logo img {
+    width: 20%;
+    align-self: center;
+    margin-top: 7px;
 }
