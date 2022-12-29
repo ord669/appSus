@@ -1,13 +1,21 @@
+.mail-list {
+  height: 100vh;
+  overflow: auto;
+
+}
+
+
 .mail-list table {
   height: 100%;
   table-layout: fixed;
-    width: 100%;
+  width: 100%;
   border-radius: 25px;
   background-color: var(--secondery-bg-color);
   border-collapse: collapse;
   border-spacing: 0;
-  border-collapse: separate; 
-border-spacing: 1em;
+  border-collapse: separate;
+  border-spacing: 1em;
+
 
 
 }
@@ -15,6 +23,7 @@ border-spacing: 1em;
 .mail-list table.fixed {
   table-layout: fixed;
 }
+
 .mail-list table.fixed td {
   overflow: hidden;
 }

@@ -4,12 +4,25 @@ const { useState, useEffect } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
 
-export function MailCompose() {
+export function MailCompose({setIsCompose,setFilters}) {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const { mailId } = useParams()
 
+    useEffect(() => {
+        if (!mailId) return
+        loadMail()
+    }, [mailId])
 
+
+    function loadMail() {
+        mailService.get(mailId)
+            .then((mail) => setMailToEdit(mail))
+            .catch((err) => {
+                console.log('Had issues in mail details', err)
+                navigate('/mail')
+            })
+    }
 
 
     function handleChange({ target }) {
@@ -29,21 +42,28 @@ export function MailCompose() {
         mailToEdit['sentAt'] = Date.now()
         mailService.save(mailToEdit).then((mail) => {
             console.log('mail saved', mail);
+            setFilters('sent')
             // showSuccessMsg('Mail saved!')
+            setIsCompose(false)
+
             navigate('/mail')
         })
+    }
+    function onCancel(){
+        setIsCompose(false)
+        navigate('/mail')
     }
 
 
     return <section className="mail-compose">
         <h2>New Message</h2>
-        <form onSubmit={onSaveMail}>
+        <form  onSubmit={onSaveMail}>
             <label htmlFor="subject">Subject : </label>
             <input type="text"
                 name="subject"
                 id="subject"
                 placeholder="Enter subject..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.subject}
                 onChange={handleChange}
             />
 
@@ -52,7 +72,7 @@ export function MailCompose() {
                 name="to"
                 id="to"
                 placeholder="Recipients..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.to}
                 onChange={handleChange}
             />
 
@@ -61,7 +81,7 @@ export function MailCompose() {
                 name="body"
                 id="body"
                 placeholder="Enter subject..."
-                // value={carToEdit.vendor}
+                value={mailToEdit.body}
                 onChange={handleChange}
             />
             {/* <label htmlFor="maxSpeed">Max speed : </label>
@@ -73,12 +93,12 @@ export function MailCompose() {
                 onChange={handleChange}
             /> */}
 
-            <div>
-                <button>{mailId ? 'Save' : 'Send'}</button>
-                <Link to="/mail">Cancel</Link>
+            <div className="mail-compose-btn">
+                <button >{mailId ? 'Save' : 'Send'}</button>
+                <button onClick={onCancel}>Cancel</button>
+             
             </div>
         </form>
-        mail-compose
     </section>
 
 }

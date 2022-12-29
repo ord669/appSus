@@ -2,6 +2,8 @@
 .mail-index{
   flex-grow: 1;
   padding: 2em;
+  overflow: hidden;
+
 
   margin: 0;
   position: relative;

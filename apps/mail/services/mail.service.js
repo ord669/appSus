@@ -23,11 +23,21 @@ export const mailService = {
 
 
 function query(criteria = getDefaultFilter()) {
+    console.log('criteria: ', criteria);
+
     return storageService.query(MAILS_KEY)
         .then(mails => {
             if (criteria.txt) {
                 const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
                 mails = mails.filter(mail => regex.test(mail.subject.toLowerCase()) || regex.test(mail.body.toLowerCase()))
+            }
+            if (criteria.status === 'sent') {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => mail.from === getLoggedinUser().email )
+            }
+            if (criteria.status === 'inbox') {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => mail.from !== getLoggedinUser().email )
             }
             // if (filterBy.txt) {
             //     const regex = new RegExp(filterBy.txt, 'i')
@@ -36,6 +46,7 @@ function query(criteria = getDefaultFilter()) {
             // if (filterBy.minSpeed) {
             //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
             // }
+            console.log('mails:', mails)
             return mails
         })
 }
@@ -69,7 +80,7 @@ function save(mail) {
 
 function getEmptyMail() {
     return {
-        subject:'',
+        subject:'inbox',
         body:'',
         isRead:false,
         sentAt: 1551133930594,
@@ -194,7 +205,7 @@ const loggedinUser = {
 
 
 const criteria = {
-    status: 'inbox/sent/trash/draft',
+    status: 'inbox',
     txt: '', // no need to support complex text search 
     isRead: true, // (optional property, if missing: show all) 
     isStared: true, // (optional property, if missing: show all) 

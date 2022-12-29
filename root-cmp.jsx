@@ -20,6 +20,7 @@ export function App() {
 
 
                 <Route path="/mail" element={<MailIndex />} />
+                <Route path="/mail/:mailId" element={<MailIndex />} />
                 <Route path="/mail/details" element={<MailDetails />} />
 
 
