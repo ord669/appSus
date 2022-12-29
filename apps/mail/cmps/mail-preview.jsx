@@ -7,7 +7,7 @@ export function MailPreview({ mail, onRemoveMail, setIsCompose,onUpdateMail,setI
   // const [changeRead ,setChangeRead] = useState(true)
   function onMailClicked() {
     setIsCompose(true)
-    navigate(`/mail/details/${mail.id}`)
+    navigate(`/mail/:folder/${mail.id}`)
   }
 
   function onChangeRead(){
