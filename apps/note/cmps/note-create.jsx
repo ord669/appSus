@@ -1,11 +1,11 @@
-const { useRef, useState, useEffect } = React
+const { useState, useEffect } = React
 
 import { noteService } from '../services/note.service.js'
 
 export function NoteCreate({ onSaveNote }) {
     const [cmpType, setCmpType] = useState('Hello')
     const [NoteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
-    const inputRef = useRef()
+
 
 
     function handleChange({ target }) {
@@ -19,18 +19,18 @@ export function NoteCreate({ onSaveNote }) {
     function onSubmitNote(ev) {
         ev.preventDefault()
         onSaveNote(NoteToAdd)
-        inputRef.current.value = ''
-
+        setNoteToAdd(noteService.getEmptyNote())
     }
 
 
     return <section className='note-create' >
         <form onSubmit={onSubmitNote} className="add-note">
 
-            <textarea ref={inputRef}
+            <textarea
                 id="txt"
                 name="txt"
                 placeholder="Enter note"
+                value={NoteToAdd.info.txt}
                 onChange={handleChange}>
             </textarea>
             <button className="btn-add-note">Add Note</button>
