@@ -9,5 +9,11 @@
     --body-font-color2: #747775;
 
     /* note */
-    --note-bar-side: #feefc3
+    --note-bar-side: #feefc3;
+    /* edit note color */
+    --edit-note-color1: #ffb6c1;
+    --edit-note-color2: #ffffe0;
+    --edit-note-color3: #fafad2;
+    --edit-note-color4: #add8e6;
+
 }

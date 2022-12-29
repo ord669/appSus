@@ -48,7 +48,6 @@ export function NoteIndex() {
     }
 
     function onChangeBgc(updateBgcNote) {
-        // console.log(':', bgc)
         console.log(':', updateBgcNote)
         noteService.save(updateBgcNote)
             .then(() => loadNotes())

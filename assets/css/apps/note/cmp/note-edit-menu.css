@@ -1,4 +1,29 @@
 .bgc-input {
-    opacity: 0;
+    /* opacity: 0; */
     cursor: pointer;
+
+}
+
+.color-picker {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin-inline: 5px;
+}
+
+button.color-picker.pink {
+    background-color: var(--edit-note-color1)
+}
+
+button.color-picker.yeliow {
+    background-color: var(--edit-note-color2)
+}
+
+button.color-picker.green {
+    background-color: var(--edit-note-color3)
+}
+
+button.color-picker.blue {
+    background-color: var(--edit-note-color4)
 }

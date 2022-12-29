@@ -72,7 +72,7 @@ function _createNotes() {
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: "#94daf0"
                 }
             },
             {
@@ -86,7 +86,7 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#fff"
+                    backgroundColor: "#ffffff"
                 }
             }
         ]

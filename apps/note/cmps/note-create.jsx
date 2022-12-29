@@ -5,7 +5,7 @@ import { noteService } from '../services/note.service.js'
 export function NoteCreate({ onSaveNote }) {
     const [cmpType, setCmpType] = useState('Hello')
     const [NoteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
-
+    const inputRef = useRef()
 
 
     function handleChange({ target }) {
@@ -13,28 +13,31 @@ export function NoteCreate({ onSaveNote }) {
         let { value, name: field } = target
         console.log('value:', value)
         setNoteToAdd((prevTxt) => ({ ...prevTxt, info: { ...prevTxt.info, [field]: value } }))
+
     }
 
     function onSubmitNote(ev) {
         ev.preventDefault()
         onSaveNote(NoteToAdd)
+        inputRef.current.value = ''
+
     }
 
 
     return <section className='note-create' >
         <form onSubmit={onSubmitNote} className="add-note">
-            <input type="text"
+
+            <textarea ref={inputRef}
                 id="txt"
                 name="txt"
                 placeholder="Enter note"
-                onChange={handleChange}
-            />
+                onChange={handleChange}>
+            </textarea>
             <button className="btn-add-note">Add Note</button>
         </form>
 
 
 
-        <hr />
     </section>
 }
 
