@@ -10,7 +10,8 @@ export const noteService = {
     query,
     save,
     getEmptyNote,
-    remove
+    remove,
+    get
 }
 
 
@@ -32,6 +33,11 @@ function save(note) {
     }
 }
 
+function get(noteId) {
+    return storageService.get(NOTES_KEY, noteId)
+    // return axios.get(CAR_KEY, carId)
+}
+
 function getEmptyNote(type = 'note-txt', txt = '') {
     return {
         type,
@@ -40,7 +46,7 @@ function getEmptyNote(type = 'note-txt', txt = '') {
             txt: txt,
         },
         style: {
-            backgroundColor: "#fff"
+            backgroundColor: "#ffffff"
         }
     }
 }
@@ -48,8 +54,6 @@ function getEmptyNote(type = 'note-txt', txt = '') {
 
 
 function _createNotes() {
-    console.log('hi:')
-
     let notes = utilService.loadFromStorage(NOTES_KEY)
     if (!notes || !notes.length) {
         notes = [
