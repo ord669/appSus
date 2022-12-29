@@ -15,6 +15,7 @@ export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     const [filterBy, setFilterBy] = useState()
+
     const [isCompose, setIsCompose] = useState(true)
 
     useEffect(() => {
@@ -54,11 +55,11 @@ export function MailIndex() {
     function setFilters(key) {
         switch (key) {
             case 'sent':
-                setFilterBy((prevFilter) => ({ ...prevFilter, status: 'sent' }))
+                setFilterBy((prevFilter) => ({ ...prevFilter, status: key }))
                 break;
 
             case 'inbox':
-                setFilterBy((prevFilter) => ({ ...prevFilter, status: 'inbox' }))
+                setFilterBy((prevFilter) => ({ ...prevFilter, status: key }))
                 break;
 
             default:
@@ -77,7 +78,7 @@ export function MailIndex() {
 
         {isCompose && <MailCompose setIsCompose={setIsCompose} setFilters={setFilters} />}
 
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  setIsCompose={setIsCompose}/>}
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail}  setIsCompose={setIsCompose} setFilters={setFilters}/>}
 
 
         <UserMsg />
