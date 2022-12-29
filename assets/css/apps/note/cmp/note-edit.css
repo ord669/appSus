@@ -1,0 +1,14 @@
+.note-edit {
+    background-color: rgb(255, 255, 255);
+    width: 90vw;
+    height: 200px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: -1px 1px 4px 0px #c2c3c3;
+    border-color: #c2c3c3;
+}
+
+.note-edit-form {
+    display: flex;
+    flex-direction: column;
+}

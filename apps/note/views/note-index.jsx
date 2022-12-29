@@ -29,10 +29,10 @@ export function NoteIndex() {
         noteService.save(NoteToAdd)
             .then((newNote) => {
                 const newNotes = notes.map(note => note.id === NoteToAdd.id ? NoteToAdd : note)
-                newNotes.push(newNote)
+                newNotes.unshift(newNote)
                 setNotes(newNotes)
+                showSuccessMsg('Note saved!')
             })
-        showSuccessMsg('Note saved!')
             .catch((err) => {
                 console.log('Had issues removing', err)
                 showErrorMsg('Could not saved note')
@@ -40,7 +40,7 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
-
+        // ev.stopPropagation()
         noteService.remove(noteId)
             .then(() => {
                 const updatedNote = notes.filter(note => note.id !== noteId)
@@ -58,8 +58,8 @@ export function NoteIndex() {
             .then(() => {
                 const updatedNotes = notes.map(note => note.id === updatedNote.id ? updatedNote : note)
                 setNotes(updatedNotes)
+                showSuccessMsg('Note update!')
             })
-        showSuccessMsg('Note update!')
             .catch((err) => {
                 console.log('Had issues removing', err)
                 showErrorMsg('Could not update note')
@@ -81,7 +81,7 @@ export function NoteIndex() {
         <main className="main-note-layout">
             <NoteCreate onSaveNote={onSaveNote} />
             <div className="nested-route">
-                <Outlet context={{ onUpdateNote }} />
+                <Outlet context={onUpdateNote} />
             </div>
             {notes && <NoteList notes={notes} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} onClickNote={onClickNote} />}
         </main>

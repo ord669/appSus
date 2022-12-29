@@ -1,8 +1,29 @@
+.note-edit-menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+    opacity: 0;
+}
+
+.btn-design {
+    padding: 5px;
+
+}
+
 .bgc-input {
-    /* opacity: 0; */
+    opacity: 0;
     cursor: pointer;
 
 }
+
+.color-change {
+    padding-top: 7px;
+
+    position: absolute;
+    align-self: center;
+}
+
+
 
 .color-picker {
     border-radius: 50%;
@@ -11,6 +32,8 @@
     border: none;
     margin-inline: 5px;
 }
+
+
 
 button.color-picker.pink {
     background-color: var(--edit-note-color1)

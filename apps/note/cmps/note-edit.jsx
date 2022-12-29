@@ -4,15 +4,11 @@ import { showSuccessMsg } from "../../../services/event-bus.service.js"
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link, useOutletContext } = ReactRouterDOM
 
-export function NoteEdit(trt) {
+export function NoteEdit() {
     const { noteId } = useParams()
     const navigate = useNavigate()
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
-    // const { trt } = useOutletContext()
-    console.log('trt:', trt)
-
-    // console.log(':', onUpdateNote)
-
+    const onUpdateNote = useOutletContext()
 
     useEffect(() => {
         loadNote()
@@ -22,8 +18,6 @@ export function NoteEdit(trt) {
         noteService.get(noteId)
             .then((note) => {
                 setNoteToEdit(note)
-                console.log('noteToEdit:', noteToEdit)
-
             })
             .catch((err) => {
                 console.log('Had issues in note details', err)
@@ -33,22 +27,15 @@ export function NoteEdit(trt) {
 
 
     function handleChange({ target }) {
-
         let { value, name: field } = target
-        console.log('value:', value)
         setNoteToEdit((prevTxt) => ({ ...prevTxt, info: { ...prevTxt.info, [field]: value } }))
-
     }
 
 
     function onEditNote(ev) {
         ev.preventDefault()
-        console.log('ev.target.value:', noteToEdit)
         noteService.save(noteToEdit).then((updateNote) => {
-            console.log('updateNote', updateNote);
-            // onUpdateNote(updateNote)
-
-            // showSuccessMsg('Note updated')
+            onUpdateNote(updateNote)
             navigate('/note')
         })
     }
@@ -56,10 +43,7 @@ export function NoteEdit(trt) {
 
     return <section className='note-edit'>
         <h1>hello {noteId} </h1>
-
-
         <form onSubmit={onEditNote} className="note-edit-form">
-
             <textarea
                 id="txt"
                 name="txt"

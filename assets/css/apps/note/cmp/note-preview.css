@@ -1,1 +1,5 @@
-.note-preview {}
+.note-preview {
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
