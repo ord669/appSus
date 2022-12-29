@@ -4,6 +4,7 @@
     height: 70%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: space-around;
     position: fixed;
     width: 83px;
@@ -11,7 +12,8 @@
     z-index: 1;
     background: var(--main-bg-color);
     transition: width 400ms;
-    
+    font-family: roboto, serif;
+
 }
 
 .mail-folder-list:hover {
@@ -19,3 +21,53 @@
 }
 
 
+/* .mail-folder-list-sent{
+    display: none;
+}
+.mail-folder-list-sent:hover {
+    display: block;
+} */
+
+.mail-folder-list:hover  .mail-folder-list-sent::after {
+    content: 'Sent';
+    
+    position: absolute;
+    left: 2.7em;
+     animation: fadeIn 1.3s
+
+}
+.mail-folder-list:hover  .mail-folder-list-sent::after {
+    content: 'Sent';
+    position: absolute;
+    left: 5.7em;
+     animation: fadeIn 1.3s
+
+}
+.mail-folder-list:hover  .mail-folder-list-inbox::after {
+    content: 'Inbox';
+    position: absolute;
+    left: 5.7em;
+     animation: fadeIn 1.3s
+
+}
+.mail-folder-list:hover  .mail-folder-list-pen::after {
+    content: 'Compose';
+    position: absolute;
+    left: 5.7em;
+     animation: fadeIn 1.3s
+
+}
+.mail-folder-list:hover  .mail-folder-list-draft::after {
+    content: 'Draft';
+    position: absolute;
+    left: 5.7em;
+     animation: fadeIn 1.3s
+
+}
+.mail-folder-list-inbox,
+.mail-folder-list-draft, 
+.mail-folder-list-inbox, 
+.mail-folder-list-sent,
+.mail-folder-list-pen{
+    font-family: Roboto;
+}
