@@ -4,11 +4,14 @@ import { showSuccessMsg } from "../../../services/event-bus.service.js"
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link, useOutletContext } = ReactRouterDOM
 
-export function NoteEdit(onUpdateNote) {
+export function NoteEdit(trt) {
     const { noteId } = useParams()
     const navigate = useNavigate()
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
-    const { onUpdateNote } = useOutletContext()
+    // const { trt } = useOutletContext()
+    console.log('trt:', trt)
+
+    // console.log(':', onUpdateNote)
 
 
     useEffect(() => {
