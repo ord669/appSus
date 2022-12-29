@@ -95,7 +95,8 @@ export function MailCompose({setIsCompose,setFilters}) {
 
             <div className="mail-compose-btn">
                 <button >{mailId ? 'Save' : 'Send'}</button>
-                <button onClick={onCancel}>Cancel</button>
+
+                <button className="clean-btn fa-solid trash" onClick={onCancel}></button>
              
             </div>
         </form>

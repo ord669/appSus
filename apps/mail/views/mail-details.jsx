@@ -1,4 +1,4 @@
-import { MailCompose } from "../cmps/mail-compose";
+import { MailCompose } from "../cmps/mail-compose.jsx";
 
 export function MailDetails() {
 
