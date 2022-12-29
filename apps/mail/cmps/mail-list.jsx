@@ -1,10 +1,13 @@
+import { MailFilter } from "./mail-filter.jsx";
 import { MailPreview } from "./mail-preview.jsx";
 
-export function MailList({ mails, onRemoveMail, setIsCompose,onUpdateMail,setIsUserDetails }) {
-        return <section className="mail-list">
-        <table>
-            <thead></thead>
-            <tbody>
+export function MailList({ mails, onRemoveMail, setIsCompose, onUpdateMail, setIsUserDetails,onSetFilter }) {
+    return <section className="mail-list">
+        <div className="mail-list-filter">
+
+        <MailFilter onSetFilter={onSetFilter} />
+        </div>
+
                 {mails.map(mail => <MailPreview
                     key={mail.id}
                     mail={mail}
@@ -13,9 +16,6 @@ export function MailList({ mails, onRemoveMail, setIsCompose,onUpdateMail,setIsU
                     onUpdateMail={onUpdateMail}
                     setIsUserDetails={setIsUserDetails}
                 />)}
-
-            </tbody>
-        </table>
     </section>
 
 }

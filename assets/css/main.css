@@ -18,12 +18,13 @@
 
 /* Mail */
 @import './apps/mail/views/mail-index.css';
-@import './apps/mail/views/mail-details.css';
 @import './apps/mail/views/cmps/mail-list.css';
 @import './apps/mail/views/cmps/mail-folder-list.css';
 @import './apps/mail/views/cmps/mail-preview.css';
 @import './apps/mail/views/cmps/mail-compose.css';
-
+/* Details */
+@import './apps/mail/views/mail-details.css';
+@import './apps/mail/views/cmps/details-content.css';
 
 /* Cmps */
 
