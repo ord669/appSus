@@ -2,16 +2,15 @@
 .mail-index{
   flex-grow: 1;
   overflow: hidden;
-  font-size: 20px;
+  font-size: 18px;
 
   margin: 0;
   position: relative;
     background: var( --main-bg-color);
     display: grid;
     grid-template-columns: 0.5fr 5fr;
-    grid-template-rows: 0.2fr 5fr;
+    grid-template-rows: 5fr;
     grid-template-areas: 
-      "header header header header"
       "sidebar main main main"
   }
 

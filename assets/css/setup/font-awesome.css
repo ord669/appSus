@@ -80,7 +80,9 @@
 .fa-solid.trash::before {
     content: "\f1f8";
 }
-
+.fa.fa-magnifying-glass::before {
+    content: "\f002";
+}
 
 
 

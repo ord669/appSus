@@ -6,7 +6,7 @@ import { eventBusService } from "../../../services/event-bus.service.js"
 
 
 
-export function MailFilter({onSetFilter}) {
+export function MailFilter() {
   
   // const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
   // const [isReadFilter,setIsReadFilter] = useState(false)
@@ -25,6 +25,7 @@ export function MailFilter({onSetFilter}) {
 }
 
   return <section className="mail-filter">
+    <span className="clean-btn fa-solid fa-magnifying-glass"></span>
 
     <input type="text"
       name="txt"
