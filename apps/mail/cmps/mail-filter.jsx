@@ -49,8 +49,8 @@ export function MailFilter() {
       onChange={handleChange}
     />
     <div className="mail-filter-btn">
-          {isReadFilter&&<button onClick={handleChange} name="isRead" value={false} className="clean-btn fa envelope"></button>}
-      {!isReadFilter&&<button onClick={handleChange} name="isRead" value={true} className="clean-btn fa envelope-open"></button>}
+          {isReadFilter&&<button onClick={handleChange} name="isRead" value={true} className="clean-btn fa envelope"></button>}
+      {!isReadFilter&&<button onClick={handleChange} name="isRead" value={false} className="clean-btn fa envelope-open"></button>}
      <button onClick={()=>{setFilterByToEdit(mailService.getDefaultFilter())}} name="isRead" value={true} className="clean-btn fa-solid fa-xmark"></button>
 
     </div>
