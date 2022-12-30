@@ -1,16 +1,9 @@
 .note-side-bar-section {
     height: 100%;
-    /* max-width: 100px; */
-    /* border-right: rgb(204, 204, 206) 1px solid; */
 }
 
 .note-side-bar {
-    /* border-right: rgb(204, 204, 206) 1px solid; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-content: center; */
-    /* height: 100%; */
+    padding-block-start: 1em;
     padding-inline-start: 1em;
     width: 30vw;
     height: 100%;
@@ -30,16 +23,18 @@
 
 .note-side-bar:hover {
     width: 250px;
+    box-shadow: 3px 3px 6px 0px #c2c3c3;
 }
 
 .btn-side-bar {
-    font-size: 1.5em;
+    font-size: 1.14em;
     padding: 1em;
+    color: var(--note-bar-side-icon);
 }
 
 .btn-side-bar.active {
     border-radius: 50%;
-    background-color: var(--note-bar-side);
+    background-color: var(--note-bar-side-active);
 }
 
 .note-side-bar:hover .btn-side-bar.active {
@@ -51,53 +46,53 @@
 .btn-side-bar:hover {
     padding-inline-end: 180px;
     border-radius: 50px;
-    background-color: rgba(222, 222, 225, 0.378);
+    background-color: var(--note-bar-side-bgc);
+    /* background-color: rgba(222, 222, 225, 0.378); */
 }
 
 .btn-side-bar.active:hover {
-    background-color: var(--note-bar-side);
+    background-color: var(--note-bar-side-active);
 }
 
 .note-side-bar:hover .note-side-bar-lightbulb::after {
     content: 'All notes';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
-    font-weight: bold;
 }
 
 .note-side-bar:hover .note-side-bar-text::after {
     content: 'Text notes';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
 }
 
 .note-side-bar:hover .note-side-bar-thumbtack::after {
     content: 'Pined notes';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
 }
 
 .note-side-bar:hover .note-side-bar-image::after {
     content: 'Image notes';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
 }
 
 .note-side-bar:hover .note-side-bar-list::after {
     content: 'Todos notes';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
 }
 
 .note-side-bar:hover .note-side-bar-trash::after {
     content: 'Trash';
     position: absolute;
-    left: 3.5em;
+    left: 4.5em;
     animation: fadeIn 1.7s;
 }
 
@@ -108,5 +103,6 @@
 .note-side-bar-text,
 .note-side-bar-trash {
     font-family: Roboto;
-
+    font-weight: 400;
+    color: var(--note-bar-side-color);
 }

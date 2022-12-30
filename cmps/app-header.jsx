@@ -27,10 +27,7 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <div className="logo">
-
-                <img src="./assets/img/logo.png" alt="a.s logo" />
-            </div>
+            <img className="logo" src="./assets/img/logo.png" alt="a.s logo" />
         </Link>
         <DynamicCmp urlParams={location.pathname} />
 

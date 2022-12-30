@@ -1,5 +1,6 @@
 header {
     background: var(--main-bg-color);
+    height: 60px;
 }
 
 .app-header {
@@ -20,15 +21,12 @@ nav a:active {
 nav a.active {
     color: #209cee;
     font-weight: bold;
-    /* text-decoration: overline; */
+
 }
+
 
 .logo {
-    padding-inline: 10px;
-}
-
-.logo img {
-    width: 20%;
-    align-self: center;
-    margin-top: 7px;
+    width: 50px;
+    margin-inline: 15px;
+    margin-top: 5px;
 }
