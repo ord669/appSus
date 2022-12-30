@@ -13,11 +13,19 @@ import { noteService } from '../services/note.service.js';
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
+    const [filterBy, setFilterBy] = useState()
+    // const { folder, mailId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         loadNotes()
     }, [])
+
+
+    // useEffect(() => {
+    //     setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
+    // }, [folder])
+
 
     function loadNotes() {
         noteService.query()
@@ -58,7 +66,7 @@ export function NoteIndex() {
             .then(() => {
                 const updatedNotes = notes.map(note => note.id === updatedNote.id ? updatedNote : note)
                 setNotes(updatedNotes)
-                showSuccessMsg('Note update!')
+                // showSuccessMsg('Note update!')
             })
             .catch((err) => {
                 console.log('Had issues removing', err)

@@ -11,7 +11,6 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote, onClickNote }) {
                     key={note.id} onClick={() => onClickNote(note.id)} >
                     <NotePreview note={note} />
                     <NoteEditMenu note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} />
-
                 </li>)
             }
         </ul>

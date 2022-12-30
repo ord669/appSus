@@ -80,6 +80,7 @@ function _createNotes() {
             {
                 id: "n103",
                 type: "note-img",
+                isPinned: false,
                 info: {
                     url: "./assets/img/audi.jpg",
                     title: "My dream car"
@@ -91,6 +92,7 @@ function _createNotes() {
             {
                 id: "n104",
                 type: "note-todos",
+                isPinned: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [

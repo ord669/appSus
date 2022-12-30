@@ -8,24 +8,45 @@ export function NoteEditMenu({ note, onRemoveNote, onUpdateNote }) {
         onUpdateNote(newNote)
     }
 
+    function stopPropagation(ev) {
+        ev.stopPropagation()
+    }
+
+    function onChangePinned(ev) {
+        ev.stopPropagation()
+        const newNote = { ...note }
+        newNote.isPinned = !newNote.isPinned
+        onUpdateNote(newNote)
+    }
+
+
+
+
     return <div className="note-edit-menu">
-        <button className="btn-design btn-remove-note clean-btn fa-solid trash" onClick={(ev) => {
-            ev.stopPropagation()
-            onRemoveNote(note.id)
-        }}></button>
+
+        {!note.isPinned && <button onClick={onChangePinned} className="clean-btn fa-solid thumbtack un-pinned" ></button>}
+        {note.isPinned && <button onClick={onChangePinned} className="clean-btn fa-solid thumbtack"></button>}
+
+        <button className="btn-design btn-remove-note clean-btn fa-solid trash"
+            onClick={(ev) => {
+                stopPropagation(ev)
+                onRemoveNote(note.id)
+            }}>
+        </button>
+
         <div>
-            {/* <img className="color-change-img" src="../../assets/img/paint-board-and-brush.png"
-                alt="paint-board-and-brush" /> */}
-            <button className=" btn-design color-change clean-btn fa-solid palette"></button>
-            <input onClick={(ev) => {
-                ev.stopPropagation()
-            }} className="bgc-input"
+            <button className="btn-design color-change clean-btn fa-solid palette"></button>
+            <input
+                onClick={stopPropagation}
+                className="bgc-input"
                 type="color"
                 name="backgroundColor"
                 id="backgroundColor"
                 value={note.style.backgroundColor}
                 onChange={handleChange}
             />
+
+
         </div>
         {/* <div>
             <button className="color-picker pink" onClick={() => onChangeBgc()}> </button>

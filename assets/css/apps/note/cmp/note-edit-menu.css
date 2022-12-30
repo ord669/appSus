@@ -23,7 +23,9 @@
     align-self: center;
 }
 
-
+.un-pinned {
+    color: rgb(128, 128, 128);
+}
 
 .color-picker {
     border-radius: 50%;
