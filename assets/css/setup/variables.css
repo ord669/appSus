@@ -9,7 +9,12 @@
     --body-font-color2: #747775;
 
     /* note */
-    --note-bar-side: #feefc3;
+    --note-bar-side-active: #feefc3;
+    --note-bar-side-bgc: #f1f3f4;
+    --note-bar-side-color: #202124;
+    --note-bar-side-icon: rgb(95, 99, 104);
+
+
     /* edit note color */
     --edit-note-color1: #ffb6c1;
     --edit-note-color2: #ffffe0;

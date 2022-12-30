@@ -17,7 +17,8 @@ export function NoteFilter() {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    return <section className='note-filter' >
+    return <section className='note-filter-section' >
+
         <input className='note-filter-input'
             type="text"
             id="txt"
@@ -26,6 +27,7 @@ export function NoteFilter() {
             value={filterByToEdit.txt}
             onChange={handleChange}
         />
+        <span className="clean-btn fa-solid fa-magnifying-glass btn-search"></span>
 
     </section >
 }

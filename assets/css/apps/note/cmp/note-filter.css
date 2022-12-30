@@ -1,9 +1,26 @@
+.note-filter-section {
+    position: relative;
+}
+
 .note-filter-input {
-    width: 50vw;
+    width: 45vw;
     padding: 10px;
     height: 40px;
 
     box-shadow: -1px 1px 4px 0px #c2c3c3;
     border: solid 1px #c2c3c3;
     border-radius: 5px;
+}
+
+.note-filter-input:focus {
+    outline: none;
+}
+
+.btn-search {
+    position: absolute;
+    top: 25%;
+    right: 10px;
+    /* margin-inline-end: 1rem; */
+    font-size: 20px;
+    color: #a4a4a4;
 }
