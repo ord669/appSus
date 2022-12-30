@@ -42,7 +42,6 @@ export function NoteEdit() {
 
 
     return <section className='note-edit'>
-        <h1>hello {noteId} </h1>
         <form onSubmit={onEditNote} className="note-edit-form">
             <textarea className="edit-note-input"
                 id="txt"

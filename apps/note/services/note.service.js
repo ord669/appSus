@@ -60,7 +60,7 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: true,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    txt: "Don't forget to call grandma before the holiday!"
                 },
                 style: {
                     backgroundColor: "#ffc7c7"
@@ -68,17 +68,28 @@ function _createNotes() {
             },
             {
                 id: "n102",
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    txt: "Buy milk and bread"
+                },
+                style: {
+                    backgroundColor: "#FFF5B3"
+                }
+            },
+            {
+                id: "n103",
                 type: "note-img",
                 info: {
                     url: "./assets/img/audi.jpg",
-                    title: "Bobi and Me"
+                    title: "My dream car"
                 },
                 style: {
                     backgroundColor: "#94daf0"
                 }
             },
             {
-                id: "n103",
+                id: "n104",
                 type: "note-todos",
                 info: {
                     label: "Get my stuff together",
@@ -89,6 +100,27 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: "#a3f0a8"
+                }
+            },
+            {
+                id: "n105",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "Add Bruno Mars's songs to spotify"
+                },
+                style: {
+                    backgroundColor: "#FFFFFF"
+                }
+            }, {
+                id: "n106",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: `"When you change your thoughts, remember to also change your world." —Norman Vincent Peale`
+                },
+                style: {
+                    backgroundColor: "#FFF5B3"
                 }
             }
         ]
