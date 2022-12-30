@@ -11,12 +11,22 @@ export const noteService = {
     save,
     getEmptyNote,
     remove,
-    get
+    get,
+    getDefaultFilter
 }
 
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
+    console.log('filterBy: ser', filterBy)
+
     return storageService.query(NOTES_KEY).then((notes) => notes.reverse())
+        .then(notes => {
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regex.test(note.info.txt))
+            }
+            return notes
+        })
 }
 
 function remove(noteId) {
@@ -33,7 +43,6 @@ function save(note) {
 
 function get(noteId) {
     return storageService.get(NOTES_KEY, noteId)
-    // return axios.get(CAR_KEY, carId)
 }
 
 function getEmptyNote(type = 'note-txt', txt = '') {
@@ -47,6 +56,10 @@ function getEmptyNote(type = 'note-txt', txt = '') {
             backgroundColor: "#ffffff"
         }
     }
+}
+
+function getDefaultFilter() {
+    return { txt: '' }
 }
 
 
@@ -83,7 +96,8 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     url: "./assets/img/audi.jpg",
-                    title: "My dream car"
+                    title: "My dream car",
+                    txt: "I love this car"
                 },
                 style: {
                     backgroundColor: "#94daf0"
@@ -94,6 +108,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: false,
                 info: {
+                    txt: "ddd",
                     label: "Get my stuff together",
                     todos: [
                         { txt: "Driving liscence", doneAt: null, id: storageService._makeId() },

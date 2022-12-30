@@ -6,33 +6,34 @@ import { NoteCreate } from '../cmps/note-create.jsx';
 import { NoteFilter } from '../cmps/note-filter.jsx';
 import { NoteList } from '../cmps/note-list.jsx';
 import { NoteSideBar } from '../cmps/note-side-bar.jsx';
-import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
+import { showSuccessMsg, showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
 
 import { noteService } from '../services/note.service.js';
 
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
-    const [filterBy, setFilterBy] = useState()
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     // const { folder, mailId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [filterBy])
 
 
     // useEffect(() => {
     //     setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
     // }, [folder])
 
-
     function loadNotes() {
-        noteService.query()
+        noteService.query(filterBy)
             .then(setNotes)
-
     }
 
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+    }
     function onSaveNote(NoteToAdd) {
         noteService.save(NoteToAdd)
             .then((newNote) => {
@@ -81,11 +82,13 @@ export function NoteIndex() {
         navigate(`/note/edit/${noteId}`)
     }
 
+    eventBusService.on('onSetFilter', setFilterBy)
+
 
     console.log('notes:', notes)
 
     return <section className="note-index">
-        <NoteFilter />
+
         <main className="main-note-layout">
             <NoteCreate onSaveNote={onSaveNote} />
             <div className="nested-route">
