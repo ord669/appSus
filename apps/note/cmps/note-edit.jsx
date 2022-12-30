@@ -44,7 +44,7 @@ export function NoteEdit() {
     return <section className='note-edit'>
         <h1>hello {noteId} </h1>
         <form onSubmit={onEditNote} className="note-edit-form">
-            <textarea
+            <textarea className="edit-note-input"
                 id="txt"
                 name="txt"
                 placeholder="Enter note"
@@ -52,7 +52,7 @@ export function NoteEdit() {
                 onChange={handleChange}>
             </textarea>
             <button className="btn-edit-note">Save edit</button>
-            <Link to="/note">Cancel</Link>
+            <Link className="btn-edit-cancel" to="/note">Cancel</Link>
         </form>
 
     </section>

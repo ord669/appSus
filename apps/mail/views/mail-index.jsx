@@ -8,7 +8,7 @@ import { MailFilter } from "../cmps/mail-filter.jsx";
 import { MailFolderList } from "../cmps/mail-folder-list.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 import { mailService } from "../services/mail.service.js";
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 import { UserMsg } from "../../../cmps/user-msg.jsx";
 
 
@@ -16,11 +16,11 @@ export function MailIndex() {
 
     const [mails, setMails] = useState([])
     const [filterBy, setFilterBy] = useState()
-    const [isCompose, setIsCompose] = useState(true)
+    const [isCompose, setIsCompose] = useState(false)
     const { folder, mailId } = useParams()
     const navigate = useNavigate()
 
-
+    
 
     useEffect(() => {
 
@@ -52,6 +52,12 @@ export function MailIndex() {
                 showErrorMsg('Could not remove Mail')
             })
     }
+function hello(hi){
+    console.log('hi:', hi)
+}
+    eventBusService.on('onSetFilter', setFilterBy)
+
+
 
 
     function onUpdateMail(mailToUpdate, nav) {
@@ -79,11 +85,11 @@ export function MailIndex() {
 
         <MailFolderList setIsCompose={setIsCompose} />
 
-        <Outlet />
+        <Outlet context={onUpdateMail} />
 
         {isCompose && <MailCompose setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
 
-        {!mailId && mails.length && <MailList mails={mails} onRemoveMail={onRemoveMail} setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} onSetFilter={onSetFilter} />}
+        {!mailId && mails.length && <MailList mails={mails} onRemoveMail={onRemoveMail} setIsCompose={setIsCompose} onUpdateMail={onUpdateMail} />}
 
 
         <UserMsg />
