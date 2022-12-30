@@ -5,7 +5,7 @@ export function DataTableRow({ todo, onRemoveTodo }) {
         <tr>
             <td>{todo.txt}</td>
             {/* <td>{todo.doneAt}</td> */}
-            <td><button onClick={() => onRemoveTodo(todo.id)}> X</button></td>
+            <td><button className="clean-btn fa-solid x" onClick={() => onRemoveTodo(todo.id)}></button></td>
 
         </tr>
     </Fragment>

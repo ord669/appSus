@@ -134,3 +134,7 @@
 .fa-solid.arrow-left::before {
     content: "\f060";
 }
+
+.fa-solid.x::before {
+    content: "\58";
+}
