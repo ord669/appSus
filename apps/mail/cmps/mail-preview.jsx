@@ -18,15 +18,15 @@ export function MailPreview({ mail, onRemoveMail, setIsCompose,onUpdateMail,setI
     mailToUpdate.isRead = !mailToUpdate.isRead
     onUpdateMail(mailToUpdate)
 
-    // console.log('mail.isRead:',mail.isRead )
+    // 
     // setChangeRead((prev)=>!prev)
   }
   // function onChangeStar(){
   //   mail.isSrarred = !mail.isRead
-  //   console.log('mail.isRead:',mail.isRead )
+  //   
   //   setChangeRead((prev)=>!prev)
   // }
-  console.log('getGoogleTime(mail.sentAt): ', getGoogleTime(mail.sentAt));
+  
 
 function getGoogleTime(time){
 
@@ -46,8 +46,8 @@ function getGoogleTime(time){
   return <section className="mail-preview">
     
       {/* {!mail.isRead && <td> <button onClick={onChangeStar} className="clean-btn fa star"></button></td>} */}
-      <div onClick={onMailClicked} className="mail-preview-subject">{mail.subject}</div>
-      <div onClick={onMailClicked} className="mail-preview-body">{mail.body}</div>
+      <div onClick={onMailClicked} className={`mail-preview-subject ${!mail.isRead&& "bold"}`}>{mail.subject}</div>
+      <div onClick={onMailClicked} className={`mail-preview-body ${!mail.isRead&& "bold"}`}>{mail.body}</div>
 
 <div className="mail-preview-buttons-time">
        <div className="mail-preview-buttons">
@@ -56,7 +56,7 @@ function getGoogleTime(time){
       {mail.isRead &&  <button onClick={onChangeRead} className="clean-btn fa envelope-open"></button>}
 
         </div>  
-      <div  className="mail-preview-time">{getGoogleTime(mail.sentAt)}</div>
+      <div  className={`mail-preview-time ${!mail.isRead&& "bold"}`}>{getGoogleTime(mail.sentAt)}</div>
 
 </div>
     

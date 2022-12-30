@@ -1,17 +1,22 @@
 .mail-filter {
     all: unset;
     background: #eaf1fb;
+    width: 50%;
+    height: 3rem;
     border-radius: 8px;
-    padding: 1rem ;
-    padding-right:15em ;
-    text-align: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
 
 }
 
 .mail-filter input{
     all: unset;
+    flex-grow: 1;
     font-size: 16px;
-    
+    width: 70%;
 
 }
 .mail-filter span{
@@ -19,6 +24,9 @@
     margin-inline-end: 1rem;
     font-size: 20px;
 
-
-
+}
+.mail-filter-btn{
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
 }

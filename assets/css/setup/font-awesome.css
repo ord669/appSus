@@ -84,6 +84,10 @@
     content: "\f002";
 }
 
+.fa-solid.fa-xmark::before {
+    content: "\f00d";
+}
+
 
 
 

@@ -4,7 +4,7 @@
     height: 70%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: start;
     position: fixed;
     row-gap: 1em;
@@ -27,7 +27,7 @@
 .btn-round {
     border-radius: 2em;
     align-self: flex-start;
-    padding: 0.75em 0.75em;
+    padding: 0.75em ;
     position: relative;
 
 }
@@ -35,7 +35,7 @@
 .btn-round:hover  {
     background-color: rgba(32,33,36,0.059);
 
-    padding-inline-end: 9.25em;
+    padding-inline-end: 10.25em;
 }
 
 
@@ -46,47 +46,66 @@
 }
 
 .mail-folder-list:hover a.active{
-    padding-inline-end: 9.25em;
+    padding-inline-end: 10.25em;
+}
+
+.mail-folder-list:hover .btn-round-compose {
+    background-color: #c2e7fd;
+    transform: translateX(-3%);
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    padding-inline-end: 5.25em;
 }
 
 
-.compose{
+
+.btn-round-compose {
+    border-radius: 16px;
+    background-color: #c2e7fd;
+    align-self: flex-start;
+    padding: 0.75em 0.75em;
+    position: relative;
+    transform: translateX(-10%);
+
+}
+
+
+
+.btn-round-compose {
     font-size:24px;
 }
+
 .mail-folder-list:hover  .mail-folder-list-pen::after {
     content: 'Compose';
     position: absolute;
-    left: 5.7em;
+    left: 3.7em;
+    top:1.2em;
+    font-size:18px;
+
+
      animation: fadeIn 1.3s
 
 }
 
 
-.mail-folder-list:hover  .mail-folder-list-sent::after {
-    content: 'Sent';
-    position: absolute;
-    left: 2.7em;
-    animation: fadeIn 1.3s
 
-}
 .mail-folder-list:hover  .mail-folder-list-sent::after {
     content: 'Sent';
     position: absolute;
-    left: 5.7em;
-     animation: fadeIn 0.8s
+    left: 3.7em;
+    animation: fadeIn 1.3s
 
 }
 .mail-folder-list:hover  .mail-folder-list-inbox::after {
     content: 'Inbox';
     position: absolute;
-    left: 5.7em;
+    left: 3.7em;
      animation: fadeIn 1.3s
 
 }
 .mail-folder-list:hover  .mail-folder-list-draft::after {
     content: 'Draft';
     position: absolute;
-    left: 5.7em;
+    left: 3.7em;
      animation: fadeIn 1.3s
 
 }
@@ -98,3 +117,9 @@
     font-family: Roboto;
 }
 
+
+
+
+.mail-folder-list-inbox-amount{
+    margin-left: 100px;
+}

@@ -39,7 +39,10 @@ export function MailIndex() {
 
 
     function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
+        const filterToSearch = {...filterBy}
+        console.log('filterToSearch: ', filterToSearch);
+        
+        setFilterBy(filterToSearch)
     }
     function onRemoveMail(mailId) {
         mailService.remove(mailId)
@@ -52,10 +55,8 @@ export function MailIndex() {
                 showErrorMsg('Could not remove Mail')
             })
     }
-function hello(hi){
-    console.log('hi:', hi)
-}
-    eventBusService.on('onSetFilter', setFilterBy)
+    
+    eventBusService.on('onSetFilter', onSetFilter)
 
 
 
@@ -78,7 +79,7 @@ function hello(hi){
     }
 
 
-    console.log('mails: ', mails);
+    
     return <section className="mail-index">
 
 

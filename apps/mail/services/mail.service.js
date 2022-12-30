@@ -24,7 +24,7 @@ export const mailService = {
 
 
 function query(criteria = getDefaultFilter()) {
-    console.log('criteria: ', criteria);
+    
     
 
     return storageService.query(MAILS_KEY)
@@ -41,6 +41,14 @@ function query(criteria = getDefaultFilter()) {
                 // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
                 mails = mails.filter(mail => mail.from !== getLoggedinUser().email )
             }
+            if (criteria.isRead) {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => mail.isRead )
+            }
+            if (criteria.isRead===false) {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => !mail.isRead )
+            }
             // if (filterBy.txt) {
             //     const regex = new RegExp(filterBy.txt, 'i')
             //     mails = mails.filter(mail => ||)
@@ -49,7 +57,7 @@ function query(criteria = getDefaultFilter()) {
             //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
             // }
             
-            console.log('mails servise: ', mails);
+            
             return mails
         })
 }
@@ -227,7 +235,7 @@ const loggedinUser = {
 const criteria = {
     status: 'inbox',
     txt: '', // no need to support complex text search 
-    isRead: true, // (optional property, if missing: show all) 
+    isRead: null, // (optional property, if missing: show all) 
     isStared: true, // (optional property, if missing: show all) 
     lables: ['important', 'romantic'] // has any of the labels 
 }
