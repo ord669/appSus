@@ -1,0 +1,14 @@
+.menu-mail{
+    width: 100%;
+    display: flex;
+    column-gap: 2em;
+
+}
+.menu-mail button{
+    padding: 1em;
+}
+.menu-mail button:hover{
+    
+    border-radius: 50%;
+    background-color:var(--main-bg-color);
+}

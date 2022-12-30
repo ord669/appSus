@@ -1,24 +1,54 @@
 .mail-folder-list{
-    padding: 0 2em;
+    padding: 0 1em;
     width: 30vw;
     height: 70%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: start;
     position: fixed;
+    row-gap: 1em;
+    padding-top: 2em;
     width: 83px;
     height: 100%;
     z-index: 1;
     background: var(--main-bg-color);
-    transition: width 400ms;
+    transition: width 100ms;
     font-family: roboto, serif;
-
 }
 
 .mail-folder-list:hover {
     width: 250px;
 }
+
+
+/* round buttons */
+
+.btn-round {
+    border-radius: 2em;
+    align-self: flex-start;
+    padding: 0.75em 0.75em;
+    position: relative;
+
+}
+
+.btn-round:hover  {
+    background-color: rgba(32,33,36,0.059);
+
+    padding-inline-end: 9.25em;
+}
+
+
+.mail-folder-list a.active{
+    color: #031e49;
+    background-color: #d3e3fd;
+
+}
+
+.mail-folder-list:hover a.active{
+    padding-inline-end: 9.25em;
+}
+
 
 
 /* .mail-folder-list-sent{
@@ -28,19 +58,23 @@
     display: block;
 } */
 
+/* .mail-folder-list:hover {
+}
+.mail-folder-list:hover .mail-folder-list { */
+
+/* } */
 .mail-folder-list:hover  .mail-folder-list-sent::after {
     content: 'Sent';
-    
     position: absolute;
     left: 2.7em;
-     animation: fadeIn 1.3s
+    animation: fadeIn 1.3s
 
 }
 .mail-folder-list:hover  .mail-folder-list-sent::after {
     content: 'Sent';
     position: absolute;
     left: 5.7em;
-     animation: fadeIn 1.3s
+     animation: fadeIn 0.8s
 
 }
 .mail-folder-list:hover  .mail-folder-list-inbox::after {
@@ -71,3 +105,35 @@
 .mail-folder-list-pen{
     font-family: Roboto;
 }
+
+
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* //////////////////////////////////////// */
+
+
+/* 
+
+.note-side-bar:hover .btn-side-bar.active {
+    border-radius: 50px;
+    padding-inline-end: 180px;
+    transition: padding-inline-end 500ms;
+}
+
+.btn-side-bar:hover {
+    padding-inline-end: 180px;
+    border-radius: 50px;
+    background-color: rgba(222, 222, 225, 0.378);
+}
+
+.btn-side-bar.active:hover {
+    background-color: var(--note-bar-side);
+}
+ */
+
+
+

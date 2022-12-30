@@ -1,9 +1,12 @@
 .mail-details{
     height: 100vh;
+  padding: 2em;
+        height: 100vh;
+        overflow: auto;
+      
+      
     background: var(--secondery-bg-color);
-    position: relative;
     border-radius: 25px;
-    padding: 2em;
 }
 
 

@@ -73,9 +73,17 @@
     content: "\f2b6";
 }
 
+.fa.archive::before {
+    content: "\f187";
+}
+
 .fa-solid.trash::before {
     content: "\f1f8";
 }
+
+
+
+
 
 
 

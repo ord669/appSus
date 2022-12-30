@@ -1,7 +1,6 @@
 .mail-list {
   height: 100vh;
   overflow: auto;
-
 }
 
 
@@ -10,7 +9,7 @@
   background-color: white;
   border-top-left-radius: 25px;
 }
-.mail-list-filte{
+.mail-list-filter{
   margin: 0 auto;
 }
 .mail-preview{

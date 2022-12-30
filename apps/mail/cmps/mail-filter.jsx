@@ -1,5 +1,7 @@
 // const { useState, useEffect } = React
 
+import { eventBusService } from "../../../services/event-bus.service.js"
+
 // import { mailService } from "../services/mail.service.js"
 
 
@@ -13,12 +15,13 @@ export function MailFilter({onSetFilter}) {
   //   onSetFilter(filterByToEdit)
   // },[filterByToEdit])
   
-
+  
   function handleChange({ target }) {
     let { value, name: field, type } = target
     value = (type === 'number') ? +value : value
     
-    onSetFilter((prevFilter) => ({ ...prevFilter, [field]: value }))
+    eventBusService.emit('onSetFilter',((prevFilter) => ({ ...prevFilter, [field]: value })))
+    
 }
 
   return <section className="mail-filter">
