@@ -89,6 +89,13 @@
     content: "\f00d";
 }
 
+.fa.fa-calendar-days::before {
+    content: "\f073";
+}
+.fa-solid.fa-calendar::before {
+    content: "\f133";
+}
+
 
 
 

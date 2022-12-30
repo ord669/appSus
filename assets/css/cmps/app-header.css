@@ -1,6 +1,7 @@
 header {
     background: var(--main-bg-color);
-    height: 60px;
+    height: 80px;
+    padding: 1rem;
 }
 
 .app-header {
