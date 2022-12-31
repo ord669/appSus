@@ -8,6 +8,9 @@ export function MailFolderList({ setIsCompose }) {
 
     const navigate = useNavigate()
     const [isStarred, setIsStarred] = useState(false)
+    const { folder, mailId } = useParams()
+    console.log('folder: ', folder);
+    console.log('foldertest: ', (folder!=='archive'));
 
     useEffect(() => {
         
@@ -30,6 +33,7 @@ export function MailFolderList({ setIsCompose }) {
         <NavLink onClick={() => { setIsStarred(false) }} to='/mail/sent' className="clean-btn fa sent btn-round " ><span className="mail-folder-list-sent"></span> </NavLink>
 
 
+        <NavLink onClick={() => { setIsStarred(false) }} to={folder !== 'archive' &&`/mail/archive`} className="clean-btn fa-solid box-archive btn-round " ><span className="mail-folder-list-box-archive"></span> </NavLink>
 
     </section>
 
