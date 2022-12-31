@@ -21,9 +21,18 @@ function query(filterBy = getDefaultFilter()) {
 
     return storageService.query(NOTES_KEY).then((notes) => notes.reverse())
         .then(notes => {
+            if (filterBy.status === 'all-note') return notes
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 notes = notes.filter(note => regex.test(note.info.txt))
+            }
+            if (filterBy.status === 'note-pinned') {
+                console.log('he:')
+                console.log('filterBy.status:', filterBy.status)
+                notes = notes.filter(note => note.isPinned === true)
+            }
+            if (filterBy.status) {
+                notes = notes.filter(note => note.type === filterBy.status)
             }
             return notes
         })

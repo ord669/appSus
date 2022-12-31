@@ -3,6 +3,8 @@
     align-items: center;
     position: relative;
     opacity: 0;
+    justify-content: space-around;
+    padding-top: 5px;
 }
 
 .btn-design {

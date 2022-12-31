@@ -33,30 +33,4 @@ nav a.active {
 }
 
 
-.hamburger {
-    display: none;
-    z-index: 6;
-}
-
-@media (max-width: 780px) {
-
-    .hamburger {
-        display: block;
-        padding-top: 10px;
-        margin-right: 10px;
-        z-index: 6;
-    }
-
-
-    nav {
-
-        height: 100vh;
-        width: 50vw;
-        margin-top: 50px;
-        position: fixed;
-
-    }
-
-
-
-}
+@media (max-width: 780px) {}

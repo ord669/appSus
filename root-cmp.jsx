@@ -29,12 +29,13 @@ export function App() {
                 </Route>
 
 
-                <Route path="/note" element={<NoteIndex />}>
-                    <Route path="/note/edit/:noteId" element={<NoteEdit />} />
+                <Route path="/note/:folder" element={<NoteIndex />}>
+                    {/* <Route path="/note/:folder" element={<NoteIndex />} /> */}
+                    <Route path="/note/:folder/edit/:noteId" element={<NoteEdit />} />
 
                 </Route>
             </Routes>
-            
+
         </section>
     </Router>
 }

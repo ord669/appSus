@@ -1,4 +1,4 @@
-const { Outlet, Link, useNavigate } = ReactRouterDOM
+const { Outlet, Link, useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 import { UserMsg } from '../../../cmps/user-msg.jsx';
@@ -14,17 +14,19 @@ import { noteService } from '../services/note.service.js';
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-    // const { folder, mailId } = useParams()
+    const { folder } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         loadNotes()
     }, [filterBy])
 
+    console.log('folder:', folder)
 
-    // useEffect(() => {
-    //     setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
-    // }, [folder])
+
+    useEffect(() => {
+        setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
+    }, [folder])
 
     function loadNotes() {
         noteService.query(filterBy)
