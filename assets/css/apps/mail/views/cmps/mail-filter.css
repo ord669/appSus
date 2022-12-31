@@ -32,3 +32,15 @@
     justify-content: space-around;
     
 }
+
+
+
+
+
+@media (max-width: 730px) {
+    
+    .mail-filter button{
+        display: none;
+    }
+  
+  }

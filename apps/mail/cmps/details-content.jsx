@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 import { DetailsMailCompose } from "./details-mail-compose.jsx";
 
 export function DetailsContent({mailDetails}) {
-    console.log('mailDetails: ', mailDetails);
+    
     const [reply,setReply] =useState(false)
     function onReply(){
         setReply(true)

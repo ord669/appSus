@@ -28,14 +28,14 @@ export function MailFilter() {
 //   useEffect(() => {
     
 //     setFilterByToEdit((prevFilter) => {
-//       console.log('prevFilter:', prevFilter)
+//       
 //       return({ ...prevFilter, status: folder })})
     
 // }, [folder])
 
   function handleChange({ target }) {
     let { value, name: field, type } = target
-    console.log('value: ', value);
+    
 
     value = (type === 'number') ? +value : value
     value = (value === 'true') ? true : value
