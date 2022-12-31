@@ -21,8 +21,6 @@ export function NoteIndex() {
         loadNotes()
     }, [filterBy])
 
-    console.log('folder:', folder)
-
 
     useEffect(() => {
         setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
@@ -80,17 +78,13 @@ export function NoteIndex() {
     }
 
     function onClickNote(noteId) {
-        console.log('noteId:', noteId)
         navigate(`/note/edit/${noteId}`)
     }
 
     eventBusService.on('onSetFilter', setFilterBy)
 
 
-    console.log('notes:', notes)
-
     return <section className="note-index">
-
         <main className="main-note-layout">
             <NoteCreate onSaveNote={onSaveNote} />
             <div className="nested-route">

@@ -9,7 +9,6 @@ export function NoteCreate({ onSaveNote }) {
 
     function handleChange({ target }) {
         let { value, name: field } = target
-        console.log('value:', value)
         setNoteToAdd((prevTxt) => ({ ...prevTxt, info: { ...prevTxt.info, [field]: value } }))
     }
 

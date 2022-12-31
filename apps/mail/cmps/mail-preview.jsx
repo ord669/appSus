@@ -54,20 +54,20 @@ export function MailPreview({ mail, onRemoveMail, setIsCompose, onUpdateMail, se
     return timeToSend
   }
 
-  function onChangeArchive(ev){
+  function onChangeArchive(ev) {
     ev.stopPropagation()
-    const mailToUpdate = {...mail}
+    const mailToUpdate = { ...mail }
     mailToUpdate.isArchive = !mailToUpdate.isArchive
 
-    onUpdateMail(mailToUpdate, mailToUpdate.isArchive? '/mail/archive':'/mail/inbox')
+    onUpdateMail(mailToUpdate, mailToUpdate.isArchive ? '/mail/archive' : '/mail/inbox')
 
   }
 
 
 
   return <section className="mail-preview">
-       {mail.isStarred && <button  onClick={onChangeStarred} className="clean-btn  fa-solid fa-star mail-preview-starred-btn " ><span className="mail-folder-list-star"></span></button>}
-        {!mail.isStarred && <button  onClick={onChangeStarred} className="clean-btn  fa fa-star mail-preview-starred-btn" ><span className="mail-folder-list-star-active"></span></button>}
+    {mail.isStarred && <button onClick={onChangeStarred} className="clean-btn  fa-solid fa-star mail-preview-starred-btn " ><span className="mail-folder-list-star"></span></button>}
+    {!mail.isStarred && <button onClick={onChangeStarred} className="clean-btn  fa fa-star mail-preview-starred-btn" ><span className="mail-folder-list-star-active"></span></button>}
 
 
     {/* {!mail.isRead && <td> <button onClick={onChangeStar} className="clean-btn fa star"></button></td>} */}
@@ -76,7 +76,7 @@ export function MailPreview({ mail, onRemoveMail, setIsCompose, onUpdateMail, se
 
     <div className="mail-preview-buttons-time">
       <div className="mail-preview-buttons">
-      <button className="clean-btn fa-solid box-archive" onClick={onChangeArchive}></button>
+        <button className="clean-btn fa-solid box-archive" onClick={onChangeArchive}></button>
 
         <button className="clean-btn fa-solid trash" onClick={() => onRemoveMail(mail.id)}></button>
         {!mail.isRead && <button onClick={onChangeRead} className="clean-btn fa envelope"></button>}
