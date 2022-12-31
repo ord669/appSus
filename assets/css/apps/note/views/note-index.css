@@ -29,3 +29,9 @@
 .note-side-bart {
     grid-area: sidebar;
 }
+
+
+
+@media (min-width: 780px) {}
+
+@media (min-width: 1060px) {}

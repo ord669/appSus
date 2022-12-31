@@ -11,7 +11,7 @@ export function About() {
         <h2>Who are we?</h2>
         <div className="about-devs">
             <div className="about-dev" >
-                <img className="about-img-dev" src="./assets/img/audi.jpg" alt="or" />
+                <img className="about-img-dev" src="./assets/img/or.png" alt="or" />
                 <h3>Or Dvir</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam eveniet repellat ullam.
                 </p>
