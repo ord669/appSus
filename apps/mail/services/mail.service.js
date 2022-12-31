@@ -26,12 +26,24 @@ export const mailService = {
 function query(criteria = getDefaultFilter()) {
     console.log('criteria: ', criteria);
     
-
     return storageService.query(MAILS_KEY)
         .then(mails => {
             if (criteria.txt) {
                 const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
                 mails = mails.filter(mail => regex.test(mail.subject.toLowerCase()) || regex.test(mail.body.toLowerCase()))
+            }
+            
+            if (criteria.isRead) {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => mail.isRead )
+            }
+            if (criteria.isRead===false) {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => !mail.isRead )
+            }
+            if (criteria.isDate) {
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.sort((objA, objB) => Number(objB.sentAt)- Number(objA.sentAt))
             }
             if (criteria.status === 'sent') {
                 // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
@@ -41,6 +53,11 @@ function query(criteria = getDefaultFilter()) {
                 // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
                 mails = mails.filter(mail => mail.from !== getLoggedinUser().email )
             }
+            if (criteria.isStarred) {
+                console.log('in:', 'in')
+                // const regex = new RegExp(criteria.txt.toLowerCase(), 'i')
+                mails = mails.filter(mail => mail.isStarred )
+            }
             // if (filterBy.txt) {
             //     const regex = new RegExp(filterBy.txt, 'i')
             //     mails = mails.filter(mail => ||)
@@ -49,7 +66,9 @@ function query(criteria = getDefaultFilter()) {
             //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
             // }
             
-            console.log('mails servise: ', mails);
+                
+            
+            console.log('mails: ', mails);
             return mails
         })
 }
@@ -154,37 +173,38 @@ function _createMails() {
 
     if (!mails || !mails.length) {
         mails = []
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false))
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false))
-        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false))
-        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false))
-        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false))
-        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true))
-        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
-        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false))
-        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false))
-        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true))
-        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
-        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
-        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false))
-        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false))
-        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true))
-        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
-        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false))
-        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false))
-        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true))
-        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false))
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false,false))
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false,false))
+        mails.push(_createMail('Miss you!', 'Would love to catch up sometimes', false,false))
+        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false,false))
+        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false,false))
+        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true,false))
+        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false,false))
+        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false,false))
+        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false,false))
+        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true,false))
+        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false,false))
+        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false,false))
+        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false,false))
+        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false,false))
+        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true,true))
+        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false,false))
+        mails.push(_createMail('3-2-1: Happiness, the value of risk, and the importance of ambition in poetry (and in life)', 'Atomic Habits is currently on sale at the lowest price Ive seen: 56% off in the US and heavily discounted in the UK and Australia as well. A great way to start the New Year', false,true))
+        mails.push(_createMail('Your job post is about to expire', 'This email confirms that your job post for App development will expire in 5 days due to inactivity.If you are still hiring, edit the post to automatically extend the expiration date. To edit your job, click the Jobs tab, locate the job in your Open Jobs, and then click Edit Posting in the Actions menu.', false,false))
+        mails.push(_createMail('🙏 The market gap in faith-based apps', 'Last year, VCs invested $175m into faith-based apps (a ~360% YOY increase). Some relatively simple ones like Bible meditation app Abide have amassed huge user bases', true,false))
+        mails.push(_createMail('How Your Thoughts Determine Your Success with Mary Morrisey', 'Do you ever feel stuck and overwhelmed, with no idea where to begin to make things better? Or maybe you know exactly what you want to do but need help bringing a specific dream to life?', false,true))
 
         utilService.saveToStorage(MAILS_KEY, mails)
     }
 }
 
-function _createMail(subject, body, isRead) {
+function _createMail(subject, body, isRead,isStarred) {
     return {
         id: storageService._makeId(),
         subject,
         body,
         isRead,
+        isStarred,
         sentAt: 1551133930594,
         removedAt: null,
         // inbox
@@ -227,8 +247,8 @@ const loggedinUser = {
 const criteria = {
     status: 'inbox',
     txt: '', // no need to support complex text search 
-    isRead: true, // (optional property, if missing: show all) 
-    isStared: true, // (optional property, if missing: show all) 
+    isRead: false, // (optional property, if missing: show all) 
+    isStarred: null, // (optional property, if missing: show all) 
     lables: ['important', 'romantic'] // has any of the labels 
 }
 

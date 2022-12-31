@@ -52,3 +52,6 @@
 	cursor: pointer;
 	outline: inherit;
 }
+.bold{
+    font-family: robotoBold;
+}

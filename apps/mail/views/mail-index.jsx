@@ -15,12 +15,13 @@ import { UserMsg } from "../../../cmps/user-msg.jsx";
 export function MailIndex() {
 
     const [mails, setMails] = useState([])
+    console.log('mails: ', mails);
     const [filterBy, setFilterBy] = useState()
     const [isCompose, setIsCompose] = useState(false)
     const { folder, mailId } = useParams()
     const navigate = useNavigate()
 
-    
+
 
     useEffect(() => {
 
@@ -41,6 +42,8 @@ export function MailIndex() {
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
     }
+
+
     function onRemoveMail(mailId) {
         mailService.remove(mailId)
             .then(() => {
@@ -52,10 +55,8 @@ export function MailIndex() {
                 showErrorMsg('Could not remove Mail')
             })
     }
-function hello(hi){
-    console.log('hi:', hi)
-}
-    eventBusService.on('onSetFilter', setFilterBy)
+
+    eventBusService.on('onSetFilter', onSetFilter)
 
 
 
@@ -78,7 +79,7 @@ function hello(hi){
     }
 
 
-    console.log('mails: ', mails);
+
     return <section className="mail-index">
 
 

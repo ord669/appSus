@@ -50,31 +50,35 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
 
 
     return <section className="mail-compose">
-        <h2>New Message</h2>
-        <form  onSubmit={onSaveMail}>
-            <label htmlFor="subject">Subject : </label>
-            <input type="text"
-                name="subject"
-                id="subject"
-                placeholder="Enter subject..."
-                // value={mailToEdit.subject}
-                onChange={handleChange}
-            />
+        <div className="mail-compose-headline">
 
-            <label htmlFor="to">To : </label>
-            <input type="text"
+        <h2>New Message</h2>
+        </div>
+        <div className="mail-compose-form">
+            
+        <form id="compose-form" onSubmit={onSaveMail}>
+        <input type="text"
                 name="to"
                 id="to"
-                placeholder="Recipients..."
+                placeholder="To"
                 // value={mailToEdit.to}
                 onChange={handleChange}
             />
 
-            <label htmlFor="body">Body : </label>
+            <input type="text"
+                name="subject"
+                id="subject"
+                placeholder="Subject"
+                // value={mailToEdit.subject}
+                onChange={handleChange}
+            />
+
+           
+
             <textarea type="text"
                 name="body"
                 id="body"
-                placeholder="Enter subject..."
+                placeholder=""
                 // value={mailToEdit.body}
                 onChange={handleChange}
             />
@@ -87,13 +91,14 @@ export function MailCompose({setIsCompose,onUpdateMail}) {
                 onChange={handleChange}
             /> */}
 
+        </form>
+        </div>
             <div className="mail-compose-btn">
-                <button >{mailId ? 'Save' : 'Send'}</button>
+                <button type="submit" form="compose-form"  className="clean-btn mail-compose-btn-send" >{mailId ? 'Save' : 'Send'}</button>
 
                 <button className="clean-btn fa-solid trash" onClick={onCancel}></button>
              
             </div>
-        </form>
     </section>
 
 }

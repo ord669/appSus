@@ -8,11 +8,11 @@ import { NoteFilter } from "../apps/note/cmps/note-filter.jsx"
 export function AppHeader() {
 
     const location = useLocation()
-    console.log('location: ',);
+    
 
 
     function DynamicCmp({ urlParams }) {
-        console.log('urlParams: ', urlParams);
+        
         if (urlParams.includes('mail')) return <MailFilter />
         if (urlParams.includes('note')) return <NoteFilter />
         // switch (urlParams) {
