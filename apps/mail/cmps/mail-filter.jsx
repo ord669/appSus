@@ -16,10 +16,9 @@ export function MailFilter() {
   // const { folder, mailId } = useParams()
   const {pathname} = useLocation()
 
-
+  const [filterByToEdit, setFilterByToEdit] = useState(null)
   
   
-  const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
   
   useEffect(() => {
     eventBusService.emit('onSetFilter', filterByToEdit)
