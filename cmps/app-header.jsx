@@ -48,11 +48,13 @@ export function AppHeader() {
 
         {/* <button className="menu-toggle-btn">☰</button> */}
         <div className="hamburger" onClick={toggleHamburger}>
-            <Hamburger isOpen={hamburgerOpen} />
+            <Hamburger />
         </div>
 
+
+        {/* isOpen={hamburgerOpen} */}
         {/* <div className="hamburger">
-            <button className="clean-btn" >☰</button>
+            <button className="clean-btn" onClick={toggleHamburger} >☰</button>
         </div> */}
 
     </header>
