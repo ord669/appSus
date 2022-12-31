@@ -8,11 +8,11 @@ import { NoteFilter } from "../apps/note/cmps/note-filter.jsx"
 export function AppHeader() {
 
     const location = useLocation()
-    
+
 
 
     function DynamicCmp({ urlParams }) {
-        
+
         if (urlParams.includes('mail')) return <MailFilter />
         if (urlParams.includes('note')) return <NoteFilter />
         // switch (urlParams) {
@@ -27,7 +27,7 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <img className="logo" src="./assets/img/logo.png" alt="a.s logo" />
+            <img className="logo" src="./assets/img/Asset.png" alt="a.s logo" />
         </Link>
         <DynamicCmp urlParams={location.pathname} />
 

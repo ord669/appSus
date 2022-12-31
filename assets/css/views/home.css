@@ -1,13 +1,18 @@
 .main-home {
-    width: 80vw;
+    width: 40vw;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    justify-content: space-between;
 }
 
-/* .main-home a {
-    padding: 20px;
-} */
-
 .main-home img {
-    width: 20vw;
-    margin: 2.5vw;
+    /* width: 20vw; */
+    /* margin: 2.5vw; */
+}
+
+.home .home-logo {
+    width: 50vw;
+    margin: 100px auto 100px;
 }
