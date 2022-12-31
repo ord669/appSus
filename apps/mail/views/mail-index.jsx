@@ -20,21 +20,24 @@ export function MailIndex() {
     const [isCompose, setIsCompose] = useState(false)
     const { folder, mailId } = useParams()
     const navigate = useNavigate()
-
+    
 
 
     useEffect(() => {
-
-
         loadMails()
     }, [filterBy])
 
 
     useEffect(() => {
+        console.log('folder: ', folder);
+
         setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
     }, [folder])
 
+
     function loadMails() {
+        console.log('folderLoad: ', filterBy);
+
         mailService.query(filterBy).then(setMails)
     }
 

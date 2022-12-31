@@ -123,13 +123,21 @@
      animation: fadeIn 1.3s
 
 }
+.mail-folder-list:hover  .mail-folder-list-box-archive::after {
+    content: 'Archive';
+    position: absolute;
+    left: 3.7em;
+     animation: fadeIn 1.3s
+
+}
 .mail-folder-list-inbox,
 .mail-folder-list-draft, 
 .mail-folder-list-inbox, 
 .mail-folder-list-sent,
 .mail-folder-list-star,
 .mail-folder-list-star-active,
-.mail-folder-list-pen{
+.mail-folder-list-pen,
+.mail-folder-list-box-archive{
     font-family: Roboto;
 }
 
