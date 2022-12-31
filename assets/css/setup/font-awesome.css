@@ -95,6 +95,9 @@
 .fa-solid.fa-calendar::before {
     content: "\f133";
 }
+.fa-solid.fa-bars::before {
+    content: "\f0c9";
+}
 
 
 

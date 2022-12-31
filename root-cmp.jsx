@@ -11,10 +11,13 @@ import { NoteEdit } from './apps/note/cmps/note-edit.jsx'
 
 
 
+
 export function App() {
     return <Router>
         <section className="app">
+
             <AppHeader />
+
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -31,6 +34,7 @@ export function App() {
 
                 </Route>
             </Routes>
+            
         </section>
     </Router>
 }

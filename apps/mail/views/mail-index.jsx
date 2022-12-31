@@ -25,6 +25,7 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
+        console.log('filterByuse: ', filterBy);
     }, [filterBy])
 
 

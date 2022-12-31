@@ -10,15 +10,16 @@ export function MailFolderList({ setIsCompose }) {
     const [isStarred, setIsStarred] = useState(false)
     const { folder, mailId } = useParams()
     console.log('folder: ', folder);
-    console.log('foldertest: ', (folder!=='archive'));
+    console.log('foldertest: ', (folder !== 'archive'));
 
     useEffect(() => {
-        
+
         eventBusService.emit('onSetFilter', ((prevFilter) => ({ ...prevFilter, isStarred: isStarred })))
     }, [isStarred])
 
     // onClick={()=>{navigate('/mail/inbox')}}
     return <section className="mail-folder-list">
+
         <button onClick={() => { setIsCompose((prev) => !prev) }} className="clean-btn fa-solid pen  btn-round-compose" ><span className="mail-folder-list-pen"></span ></button>
 
         <NavLink onClick={() => { setIsStarred(false) }} to='/mail/inbox' className="clean-btn  fa-solid inbox btn-round " ><span className="mail-folder-list-inbox"></span></NavLink>
@@ -33,8 +34,11 @@ export function MailFolderList({ setIsCompose }) {
         <NavLink onClick={() => { setIsStarred(false) }} to='/mail/sent' className="clean-btn fa sent btn-round " ><span className="mail-folder-list-sent"></span> </NavLink>
 
 
-        <NavLink onClick={() => { setIsStarred(false) }} to={folder !== 'archive' &&`/mail/archive`} className="clean-btn fa-solid box-archive btn-round " ><span className="mail-folder-list-box-archive"></span> </NavLink>
+        <NavLink onClick={() => { setIsStarred(false) }} to={folder !== 'archive' && `/mail/archive`} className="clean-btn fa-solid box-archive btn-round " ><span className="mail-folder-list-box-archive"></span> </NavLink>
+        <div className="mail-folder-list-btn-menu">
 
+            <button className=" clean-btn fa-solid fa-bars  " ></button>
+        </div>
     </section>
 
 }
