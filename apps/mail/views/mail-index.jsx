@@ -15,7 +15,7 @@ import { UserMsg } from "../../../cmps/user-msg.jsx";
 export function MailIndex() {
 
     const [mails, setMails] = useState([])
-    console.log('mails: ', mails);
+    
     const [filterBy, setFilterBy] = useState()
     const [isCompose, setIsCompose] = useState(false)
     const { folder, mailId } = useParams()
@@ -25,19 +25,19 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-        console.log('filterByuse: ', filterBy);
+        
     }, [filterBy])
 
 
     useEffect(() => {
-        console.log('folder: ', folder);
+        
 
         setFilterBy((prevFilter) => ({ ...prevFilter, status: folder }))
     }, [folder])
 
 
     function loadMails() {
-        console.log('folderLoad: ', filterBy);
+        
 
         mailService.query(filterBy).then(setMails)
     }

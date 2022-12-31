@@ -9,8 +9,8 @@ export function MailFolderList({ setIsCompose }) {
     const navigate = useNavigate()
     const [isStarred, setIsStarred] = useState(false)
     const { folder, mailId } = useParams()
-    console.log('folder: ', folder);
-    console.log('foldertest: ', (folder !== 'archive'));
+    
+    
 
     useEffect(() => {
 
