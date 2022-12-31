@@ -39,12 +39,12 @@
     outline: none;
 }
 
-.add-note-form textarea:focus+.btn-add-note {
+.add-note-form textarea:focus+.add-note-edit-btn {
     opacity: 1;
 
 }
 
-.btn-add-note {
+.add-note-edit-btn {
     opacity: 0;
     /* padding-inline: 10px; */
     position: absolute;

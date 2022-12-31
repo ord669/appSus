@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 
+import { NoteEditMenu } from './note-edit-menu.jsx';
 import { noteService } from '../services/note.service.js'
 
 export function NoteCreate({ onSaveNote }) {
@@ -18,6 +19,19 @@ export function NoteCreate({ onSaveNote }) {
         setNoteToAdd(noteService.getEmptyNote())
     }
 
+    function onChangePinned(ev) {
+        ev.stopPropagation()
+        const newNote = { ...NoteToAdd }
+        newNote.isPinned = !newNote.isPinned
+        setNoteToAdd(newNote)
+    }
+
+    function handleChangeColor(ev) {
+        let { value, name: field } = ev.target
+        const newNote = { ...NoteToAdd, style: { ...NoteToAdd.style, [field]: value } }
+        setNoteToAdd(newNote)
+    }
+
 
     return <section className='note-create' >
         <form onSubmit={onSubmitNote} className="add-note-form">
@@ -29,7 +43,23 @@ export function NoteCreate({ onSaveNote }) {
                 value={NoteToAdd.info.txt}
                 onChange={handleChange}>
             </textarea>
-            <button className="btn-add-note clean-btn">Add Note</button>
+            <div className="add-note-edit-btn">
+                {!NoteToAdd.isPinned && <button onClick={onChangePinned} className="clean-btn fa-solid thumbtack un-pinned" ></button>}
+                {NoteToAdd.isPinned && <button onClick={onChangePinned} className="clean-btn fa-solid thumbtack"></button>}
+                <button className="btn-design color-change clean-btn fa-solid palette"></button>
+                <input
+                    onClick={(ev) => ev.stopPropagation()}
+                    className="bgc-input"
+                    type="color"
+                    name="backgroundColor"
+                    id="backgroundColor"
+                    value={NoteToAdd.style.backgroundColor}
+                    onChange={handleChangeColor}
+                />
+
+
+                <button className="btn-add-note clean-btn">Add Note</button>
+            </div>
         </form>
 
 

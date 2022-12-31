@@ -29,7 +29,7 @@ function query(filterBy = getDefaultFilter()) {
             if (filterBy.status === 'note-pinned') {
                 console.log('he:')
                 console.log('filterBy.status:', filterBy.status)
-                notes = notes.filter(note => note.isPinned === true)
+                return notes = notes.filter(note => note.isPinned === true)
             }
             if (filterBy.status) {
                 notes = notes.filter(note => note.type === filterBy.status)

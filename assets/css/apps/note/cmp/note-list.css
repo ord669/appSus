@@ -4,12 +4,10 @@
 
 .note-list {
     padding: 20px;
-    /* display: flex;
-    flex-direction: row; */
+    padding-left: 30px;
     margin: 0 auto;
     width: 80vw;
-    /* flex-wrap: wrap; */
-    columns: 220px 4;
+    columns: 220px 2;
 }
 
 .note-list:first-child {
@@ -43,9 +41,16 @@
     margin-bottom: 5px;
 }
 
-/* .note button {
-    border: none;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-} */
+
+
+@media (min-width: 780px) {
+    .note-list {
+        padding: 20px;
+        margin: 0 auto;
+        width: 80vw;
+        columns: 220px 4;
+    }
+
+
+
+}
