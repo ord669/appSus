@@ -4,26 +4,28 @@
 }
 
 
-.mail-list  {
+.mail-list {
   height: 100%;
   background-color: white;
   border-top-left-radius: 25px;
 }
-.mail-list-filter{
+
+.mail-list-filter {
   margin: 0 auto;
 }
-.mail-preview{
+
+.mail-preview {
   display: flex;
   padding: 1rem 2rem;
   cursor: pointer;
 
 }
 
-.mail-preview-starred-btn{
+.mail-preview-starred-btn {
   margin-inline-end: 1rem;
 }
 
-.mail-preview-subject{
+.mail-preview-subject {
   width: 200px;
   min-width: 200px;
   overflow: hidden;
@@ -32,7 +34,7 @@
   margin-right: 3rem;
 }
 
-.mail-preview-subject{
+.mail-preview-subject {
   width: 200px;
   min-width: 200px;
   overflow: hidden;
@@ -40,7 +42,8 @@
   text-overflow: ellipsis;
   margin-right: 3rem;
 }
-.mail-preview-body{
+
+.mail-preview-body {
   flex-grow: 1;
   overflow: hidden;
   white-space: nowrap;
@@ -48,7 +51,8 @@
 
 
 }
-.mail-body{
+
+.mail-body {
   flex-grow: 1;
   text-overflow: ellipsis;
 
@@ -57,10 +61,10 @@
 
 
 
-.mail-preview-buttons{
+.mail-preview-buttons {
   position: absolute;
   bottom: 20%;
-    transform: translate(+60%, 0);
+  transform: translate(+60%, 0);
   z-index: 1;
   width: 100px;
   min-width: 100px;
@@ -70,11 +74,12 @@
   justify-content: space-around;
 
 }
-.mail-preview:hover{
+
+.mail-preview:hover {
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
-.mail-preview-buttons-time{
+.mail-preview-buttons-time {
   text-align: end;
   position: relative;
   width: 150px;
@@ -86,7 +91,7 @@
   display: none;
 }
 
-.mail-preview:hover .mail-preview-buttons{
+.mail-preview:hover .mail-preview-buttons {
   opacity: 1;
 
 }
@@ -129,4 +134,34 @@
 
 
 
+@media (max-width: 730px) {
+  .mail-list {
+    margin: 0 auto;
+    width: 80%;
+  }
 
+  .mail-preview {
+    padding: 1rem;
+    padding-left: 2rem;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+
+  }
+
+  .mail-preview-body {
+    width: 100%;
+  }
+  .mail-preview button{
+    display: none;
+  }
+  .mail-preview-buttons-time{
+    display: none;
+  }
+
+
+}
